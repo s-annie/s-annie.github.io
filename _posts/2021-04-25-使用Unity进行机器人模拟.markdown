@@ -8,12 +8,11 @@ tags: Simulation Unity
 
 在实际操作之前，先看两篇日网上的文章。
 
-https://note.com/unityjapan/n/nf9ca97d3d472
 [aiboの開発者・川部祐介さんとUnityについて語ってみた](https://note.com/unityjapan/n/nf9ca97d3d472){:target="_blank"}
 
 第一篇文章是索尼社生产的机器狗aibo开发者的访谈。这位先生主要负责aibo的动作开发部分，他认为在Unity使用3D模型进行aibo的动作模拟可使其更加富有生命感。不过游戏引擎和现实操作的差距依旧存在，所以不能把希望全部寄托在模拟器上。然而有效地使用模拟器依旧是提升开发速度的重要方式。
 
-https://note.com/unityjapan/n/n1d3f0bc6f8fa
+[「ロボット開発でUnityを使いたくなる3つの理由」をPreferred Networksの矢島さん・海野さんに聞いた](https://note.com/unityjapan/n/n1d3f0bc6f8fa){:target="_blank"}
 
 第二篇文章则是更加详细地介绍了Unity开发的优势。接受采访的是机器人与人工智能方面发展迅猛的PFN社的两名成员。
 
