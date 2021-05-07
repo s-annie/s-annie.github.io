@@ -7,17 +7,17 @@ tags: Simulation Unity
 
 原文：[Robotics simulation in Unity is as easy as 1, 2, 3!](https://blogs.unity3d.com/2020/11/19/robotics-simulation-in-unity-is-as-easy-as-1-2-3/)
 
-1. Defining the robot‘s task  定义机器人的任务
+### Defining the robot‘s task   定义机器人的任务
 
 这个教程里的任务很简单，即利用机器臂抓起一个物体然后将它放在指定的位置上。环境同样很简单，一个空屋子，一个放机器臂的桌子和一个正方体。我们使用MoveIt这个库来进行动作规划。**模拟器将机器臂的各轴角度，正方体的坐标，以及目标位置的坐标发送给MoveIt。MoveIt会计算出动作轨迹，然后将其发送回模拟器由其执行。**  
 明确任务目标之后，看看如何在这个工作流程中使用Unity。
 
-2. Bringing your robot into simulation  将机器人导入模拟环境
+### Bringing your robot into simulation   将机器人导入模拟环境
 
 机器人模拟需要建立假想环境。在Unity中可以创建假想环境很容易，问题是如何将机器人放入这个环境？  
 描述机器人物理性质可以使用[Universal Robot Description Format (URDF）](http://wiki.ros.org/urdf)这种记述方式，用过ROS的应该都很熟悉了。Unity中有一个叫做[URDF Importer](https://github.com/Unity-Technologies/URDF-Importer)的包，可以用来将URDF文件导入场景之中。
 
-3. Connecting your simulation to ROS  连接ROS和模拟器
+### Connecting your simulation to ROS   连接ROS和模拟器
 
 将机器人导入场景之后，接下来就要测试动作规划算法了。Unity需要向ROS传递机器人的姿势，目标物体等状态消息，ROS则需要向Unity传回规划后的动作轨迹。  
 这里提供了两个新的包，ROS-TCP-Connector和ROS-TCP-Endpoint. ROS-TCP-Connector可用于转换ROS.msg 和.srv文件，以及在Unity这边pub/sub消息。ROS-TCP-Endpoint则创建了一个endpoint，使ROS和Unity之间可以相互通信。  
