@@ -1,3 +1,9 @@
+---
+layout: post
+categories: Web
+tags: WebSocket
+---
+
 WebSocket是一种在网络上进行低成本双向通信的机制。最初HTTP是网络上的唯一通信选择，然而HTTP的长时间轮询（Polling）很浪费时间，所以WebSocket协议应运而生。
 
 WebSocket通过HTTP在客户端和服务器之间交换信息建立连接（TCP），在建立的连接上进行低成本的双向通信。大致分为以下几个步骤。
