@@ -3,9 +3,9 @@ layout: post
 categories: Robotics
 tags: Simulation Unity
 ---
-原文：[Robotics simulation in Unity is as easy as 1, 2, 3!](https://blogs.unity3d.com/2020/11/19/robotics-simulation-in-unity-is-as-easy-as-1-2-3/)
-
 这篇文章发表在2020年11月份，也就是半年前，主要介绍了Unity-Robotics-Hub这个库。Unity-Robotics-Hub提供了一个pick-and-place的实践教程。这是个很基本的任务，我们将它细分成几个工作流程，然后看看Unity在每步中所起到的作用。
+
+原文：[Robotics simulation in Unity is as easy as 1, 2, 3!](https://blogs.unity3d.com/2020/11/19/robotics-simulation-in-unity-is-as-easy-as-1-2-3/)
 
 1. Defining the robot‘s task / 定义机器人的任务  
 这个教程里的任务很简单，即利用机器臂抓起一个物体然后将它放在指定的位置上。环境同样很简单，一个空屋子，一个放机器臂的桌子和一个正方体。我们使用MoveIt这个库来进行动作规划。**模拟器将机器臂的各轴角度，正方体的坐标，以及目标位置的坐标发送给MoveIt。MoveIt会计算出动作轨迹，然后将其发送回模拟器由其执行。**  
