@@ -6,7 +6,7 @@ $linkColor: #0a59b0;
 $mobileW: 768px;
 $smallMobileW: 480px;
 $bigScreenW: 1600px;
-$leftWidth: 220px;
+$leftWidth: 300px;
 
 *,
 *:before,
@@ -39,7 +39,7 @@ a {
 }
 
 h2 {
-  margin: 0.7em 0;
+  margin: 0.3em 0;
   @media screen and (max-width: $mobileW) {
     margin: 0.3em 0;
   }
@@ -188,10 +188,10 @@ main {
   margin: 0;
   padding: 0;
   li {
-    font-size: 14px;
+    font-size: 12px;
     float: left;
     background-color: #e3e3e3;
-    padding: 5px 20px;
+    padding: 5px 18px;
     border-radius: 2px;
     @media screen and (max-width: $mobileW) {
       margin-top: 5px;
@@ -222,7 +222,7 @@ main {
 }
 
 .post-title {
-  line-height: 1.2em;
+  line-height: 2.0em;
   font-size: 28px;
   margin-bottom: 10px;
 }
