@@ -16,6 +16,7 @@ class ProductionClass:
 >>> real.closer(mock)
 >>> mock.close.assert_called_with()  # assert_called_with（）用于测试是否被正确呼出
 ```
+
 2. 模仿某个类
 ```py
 def some_function():
@@ -28,6 +29,7 @@ with patch('module.Foo') as mock:
     result = some_function()
     assert result == 'the result'
 ```
+
 3. 模仿的命名与呼出记录
 `mock_calls`记录mock被呼出的次数，可以用来与期待值做比较。
 ```bash
@@ -46,6 +48,7 @@ with patch('module.Foo') as mock:
 >>> mock.mock_calls == expected
 True
 ```
+
 4. 设置模仿的返回值和属性
 下面这个例子是一个关于`mock.connection.cursor().execute("SELECT 1")`返回值的测试。
 相关知识：[`call`的使用](https://docs.python.org/3.5/library/unittest.mock.html#unittest.mock.call)
@@ -61,6 +64,7 @@ True
 >>> mock.mock_calls == expected
 True
 ```
+
 5. 设置模仿的例外
 `side_effect`是一个很好用的属性。比如说这里可以设置函数的例外。
 ```bash
