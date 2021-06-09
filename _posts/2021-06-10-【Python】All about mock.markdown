@@ -5,7 +5,7 @@ mock顾名思义，用于在测试中模拟某些变量或者函数。比如说�
 ### Mock的基本使用
 
 1. 模仿某个函数或者对象
-```py
+```python
 class ProductionClass:
     def closer(self, something):
         something.close()
@@ -18,7 +18,7 @@ class ProductionClass:
 ```
 
 2. 模仿某个类
-```py
+```python
 def some_function():
     instance = module.Foo()
     return instance.method()
