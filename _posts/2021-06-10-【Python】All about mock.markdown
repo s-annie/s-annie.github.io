@@ -2,9 +2,9 @@
 
 mock顾名思义，用于在测试中模拟某些变量或者函数。比如说在嵌入式软件中想要测试某个函数，而这个函数中有一个步骤是与硬件的通信，我们就可以通过模仿这一步骤而达到测试其余部分的目的。
 
-### Mock的基本使用
+## Mock的基本使用
 
-1. 模仿某个函数或者对象
+### 模仿某个函数或者对象
 ```python
 class ProductionClass:
     def closer(self, something):
@@ -17,7 +17,7 @@ class ProductionClass:
 >>> mock.close.assert_called_with()  # assert_called_with（）用于测试是否被正确呼出
 ```
 
-2. 模仿某个类
+### 模仿某个类
 ```python
 def some_function():
     instance = module.Foo()
@@ -30,7 +30,7 @@ with patch('module.Foo') as mock:
     assert result == 'the result'
 ```
 
-3. 模仿的命名与呼出记录
+### 模仿的命名与呼出记录
 `mock_calls`记录mock被呼出的次数，可以用来与期待值做比较。
 ```bash
 >>> mock = MagicMock(name='foo')
@@ -49,7 +49,7 @@ with patch('module.Foo') as mock:
 True
 ```
 
-4. 设置模仿的返回值和属性
+### 设置模仿的返回值和属性
 下面这个例子是一个关于`mock.connection.cursor().execute("SELECT 1")`返回值的测试。
 相关知识：[`call`的使用](https://docs.python.org/3.5/library/unittest.mock.html#unittest.mock.call)
 ```bash
@@ -65,7 +65,7 @@ True
 True
 ```
 
-5. 设置模仿的例外
+### 设置模仿的例外
 `side_effect`是一个很好用的属性。比如说这里可以设置函数的例外。
 ```bash
 >>> mock = Mock(side_effect=Exception('Boom!'))
@@ -75,7 +75,7 @@ Traceback (most recent call last):
 Exception: Boom!
 ```
 
-6. 动态设定模仿的返回值
+### 动态设定模仿的返回值
 如果想让mock每次被呼出时返回不同值，同样可以使用`side_effect`.
 ```bash
 >>> mock = MagicMock(side_effect=[4, 5, 6])
