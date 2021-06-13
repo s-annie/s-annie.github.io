@@ -11,3 +11,19 @@
   @import "toggle";
   @import "dark";
 {%- endif -%}
+
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+img + em {
+  font-style: normal;
+  display: inherit;
+  text-align: center;
+  font-size: 90%;
+  color: #808080
+}
