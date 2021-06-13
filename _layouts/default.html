@@ -32,6 +32,13 @@
       <p class="tagline">{{ site.plainwhite.tagline }}</p>
       {%- endif -%}
       </div>
+      <div class="about-navigation">
+        <a href="{{ "/" | relative_url }}">Home</a>
+        <a href="{{site.baseurl}}/tech.html">Tech</a>
+        <a href="{{site.baseurl}}/life.html">Life</a>
+        <a href="{{site.baseurl}}/tbd.html">Gallery</a>
+        <a href="{{site.baseurl}}/tbd.html">About me</a>
+      </div>
       {% capture footer %}
       {%- if site.plainwhite.social_links != '' -%}
       <ul class="social about-footer {{condensed_class}}">
@@ -160,7 +167,7 @@
       </div>
       {%- endif -%}
       {% endcapture %}
-      {{ footer }}
+      {{ footer }}      
     </section>
     <section class="content">
       {{ content }}

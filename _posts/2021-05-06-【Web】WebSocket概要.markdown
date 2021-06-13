@@ -1,6 +1,6 @@
 ---
 layout: post
-categories: Web
+categories: web tech
 tags: WebSocket
 ---
 

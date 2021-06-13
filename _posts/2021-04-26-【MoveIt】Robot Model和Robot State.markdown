@@ -1,6 +1,6 @@
 ---
 layout: post
-categories: Robotics MoveIt
+categories: robotics MoveIt tech
 ---
 
 RobotModel和RobotState这两个类是解决机器人动力学的核心。今天通过代码看看如何在Moveit中使用这两个类。

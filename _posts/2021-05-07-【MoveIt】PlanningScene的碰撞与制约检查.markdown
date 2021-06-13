@@ -1,3 +1,8 @@
+---
+layout: post
+categories: robotics moveit tech
+---
+
 `PlanningScene`类主要提供碰撞检查（collision check）和制约检查（constrain check）的接口。这篇文章为MoveIt官方教程的整理与实践内容。  
 原文：[MoveIt Tutorials: Planning Scene](http://docs.ros.org/en/melodic/api/moveit_tutorials/html/doc/planning_scene/planning_scene_tutorial.html)
 

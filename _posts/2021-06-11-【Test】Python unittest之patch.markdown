@@ -1,3 +1,8 @@
+---
+layout: post
+categories: python test tech
+---
+
 接着上次写的[unittest之mock的基本使用](https://s-annie.github.io/2021/06/10/Test-Python-unittest之mock的基本使用.html)，这次写下如何使用`unittest.mock.patch`为mock打补丁。
 
 ## 关于patch

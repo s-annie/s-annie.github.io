@@ -1,3 +1,8 @@
+---
+layout: post
+categories: python test tech
+---
+
 最近写测试代码的重担又落到了我的肩上...而且这次的难度还升级了，需要熟练使用mock。去年11月积攒的那些关于unittest和mock的知识全部都忘记了，当时又没有做总结，只好再从头捡起来。找遍全网没有发现特别好的资料，直接看Python的公式网站了([unittest.mock上手指南](https://docs.python.org/zh-cn/3/library/unittest.mock-examples.html))
 
 ## 关于mock

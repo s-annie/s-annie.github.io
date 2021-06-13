@@ -1,14 +1,8 @@
 ---
 layout: default
+permalink: tech
 ---
-
-{%- if page.title -%}
-  <h1 class="page-heading">{{ page.title }}</h1>
-{%- endif -%}
-
-{{ content }}
-
-{%- if site.posts.size > 0 -%}
+{%- if site.categories.tech.size > 0 -%}
   <ul class="posts">
     <li class="posts-labelgroup" id="posts-labelgroup">
       <h1 id="posts-label">posts</h1>
@@ -23,7 +17,7 @@ layout: default
       {% endif %}
     </li>
 
-    {%- for post in site.posts -%}
+    {%- for post in site.categories.tech -%}
       <li>
         {%- assign date_format = site.plainwhite.date_format | default: "%b %-d, %Y" -%}
         <a class="post-link" href="{{ post.url | relative_url }}">
