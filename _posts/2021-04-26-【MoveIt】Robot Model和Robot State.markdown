@@ -1,5 +1,6 @@
 ---
 layout: post
+title: 【MoveIt】RobotModel类与RobotState类的应用
 categories: robotics MoveIt tech
 ---
 

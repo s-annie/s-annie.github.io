@@ -1,5 +1,6 @@
 ---
 layout: post
+title: 【Web】WebSocket概要
 categories: web tech
 tags: WebSocket
 ---

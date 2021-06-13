@@ -1,10 +1,11 @@
 ---
 layout: post
+title: 【Unity】Unity与机器人模拟
 categories: robotics unity tech
 tags: Simulation Unity
 ---
 
-机器人模拟最常用的就是Gazebo了吧。然而每次在terminal上ctrl+c之后都需要killall gzserver来将它彻底关掉，否则下次启动就会出现error这件事情令我十分头疼。不过说实话Gazebo我也没有接触太多，所以谈不上熟练应用，模拟器使用能力接近空白。不过最近对于Unity很感兴趣，新年度决定试试这个软件。
+比起Unity，机器人模拟更加常用的是Gazebo。然而每次在terminal上ctrl+c之后都需要killall gzserver来将它彻底关掉，否则下次启动就会出现error这件事情令我十分头疼。不过说实话Gazebo我也没有接触太多，所以谈不上熟练应用，模拟器使用能力接近空白。不过最近对于Unity很感兴趣，新年度决定试试这个软件。
 
 在实际操作之前，先看两篇日网上的文章。
 

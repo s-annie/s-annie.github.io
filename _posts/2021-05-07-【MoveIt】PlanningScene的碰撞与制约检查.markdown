@@ -1,5 +1,6 @@
 ---
 layout: post
+title: 【MoveIt】PlanningScene类的碰撞与制约检查
 categories: robotics moveit tech
 ---
 
