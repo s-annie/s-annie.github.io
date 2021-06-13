@@ -37,4 +37,4 @@ git clone --branch release_17 https://github.com/Unity-Technologies/ml-agents.gi
 1. 在项目窗口，进入Assets/ML-Agents/Examples/3DBall/Prefabs文件夹。展开3DBall，点击`Agent`。然后在将位于Assets/ML-Agents/Examples/3DBall/TFModels的3DBall模型拖入Inspector窗口中Behavior Parameters的模型属性。
 2. 想要同时操作多个模型的话，可以在层次窗口的搜索栏中输入`Agent`，然后按住Shift选择多个模型。
 3. 将模型使用的推论设备设置为CPU。之后点击Unity Editor的Play按钮，就可以看到平台使用预先训练好的模型来平衡球了。
-![image](../assets/3dball_1.gif)
+![image](https://s-annie.github.io/assets/3dball_1.gif)
