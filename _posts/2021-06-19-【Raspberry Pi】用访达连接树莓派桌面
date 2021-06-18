@@ -27,6 +27,6 @@ vncserver
 *我这是日文界面，sorry*
 
 点击后出现如下画面。服务器是`vnc://<IP>:5901`的格式。5901时tigntvnc所用端口。
-<img src="/assets/post/2021-6/9.png" class="center">
+<img src="/assets/post/2021-6/9.png" >
 
 点击连接，输入刚才设定的密码，就可以看到树莓派的桌面出现在Macbook的上面了，非常方便。
