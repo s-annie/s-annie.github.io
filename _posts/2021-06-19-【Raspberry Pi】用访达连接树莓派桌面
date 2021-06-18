@@ -23,7 +23,10 @@ vncserver
 
 ### 3. 从Finder连接至树莓派
 鼠标右键+control打开Finder的菜单，点击“连接服务器”。
+<img src="/assets/post/2021-6/8.png" >
+*我这是日文界面，sorry*
 
 点击后出现如下画面。服务器是`vnc://<IP>:5901`的格式。5901时tigntvnc所用端口。
+<img src="/assets/post/2021-6/9.png" class="center">
 
 点击连接，输入刚才设定的密码，就可以看到树莓派的桌面出现在Macbook的上面了，非常方便。
