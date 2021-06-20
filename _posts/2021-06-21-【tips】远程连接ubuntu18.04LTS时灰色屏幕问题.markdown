@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 【tips】远程连接ubuntu18.04LTS时灰色屏幕问题
+title: 【tips】vnc连接ubuntu18.04时的灰色屏幕问题
 categories: Ubuntu tips tech
 ---
 ### 问题描述
