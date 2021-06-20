@@ -22,7 +22,7 @@ vncserver
 注意在被询问viewonly？的时候要坚定地选择no。
 
 ### 3. 从Finder连接至树莓派
-鼠标右键+control打开Finder的菜单，点击“连接服务器”。
+鼠标右键+control打开Finder的菜单，点击“连接服务器”。(日文界面，Sorry)
 ![image]("/assets/post/2021-6/8.png")
 
 点击后出现如下画面。服务器是`vnc://<IP>:5901`的格式。5901时tigntvnc所用端口。
