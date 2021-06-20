@@ -1,3 +1,8 @@
+---
+layout: post
+title: 【tips】远程连接ubuntu18.04LTS时灰色屏幕问题
+categories: Ubuntu tips tech
+---
 ### 问题描述
 在[使用Macbook的Finder连接树莓派](https://s-annie.github.io/tech/raspberrypi/2021/06/19/Raspberry-Pi-用访达连接树莓派桌面.html)
 里面写了如何从Macbook的Finder连接树莓派。之后我想用同样的方法，从Macbook远程连接到另一台Ubuntu18.04上，却在建立连接之后遇到了灰色屏幕问题。
