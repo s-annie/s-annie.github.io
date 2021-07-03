@@ -1,6 +1,7 @@
 ---
 layout: post
-title: 2021-07-03-【Algorithm】Bubble Sort 冒泡排序
+title:【Algorithm】Bubble Sort 冒泡排序
+category: algorithm tech
 ---
 ## 冒泡排序
 依次比较排序对象元素列相邻的两个元素, 如果两个元素的顺序错误就把它们交换过来。  
