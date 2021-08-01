@@ -24,8 +24,3 @@ gnome-session --session=gnome-flashback-metacity --disable-acceleration-check --
 3. 重新启动Ubuntu，再用Finder连接就可以正常看到屏幕了。
 
 参考：[ubuntu 18.04 VNC Grey screen](https://askubuntu.com/questions/1205687/ubuntu-18-04-vnc-grey-screen). 
-
-### Test
-{% raw %}
-$$a^2 + b^2 = c^2$$ --> note that all equations between these tags will not need escaping! 
-{% endraw %}
