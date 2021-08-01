@@ -1,6 +1,6 @@
 ---
 layout: post
-title:【Algorithm】Bubble Sort 冒泡排序
+title: 【Algorithm】Bubble Sort 冒泡排序
 category: algorithm tech
 ---
 ## 冒泡排序
