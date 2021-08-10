@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 【RL】k臂赌博机(2)・行动价值方法
+title: 【RL】k臂赌博机(2)・$\epsilon$贪婪方法
 categories: Reinforcement-Learning
 ---
 ## 行动估算价值的样本平均

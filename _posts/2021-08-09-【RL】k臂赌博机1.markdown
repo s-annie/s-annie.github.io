@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 【RL】k臂赌博机(1)・探索与利用
+title: 【RL】k臂赌博机(1)・平衡探索与利用
 categories: Reinforcement-Learning
 ---
 ## k臂赌博机问题
