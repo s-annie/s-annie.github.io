@@ -1,0 +1,21 @@
+---
+layout: post
+title: 【Web】Nuxt.js 试运行
+categories: web
+---
+暑假临近尾声，从来不肯停止折腾的我在准备更新博客设计的时候有了个新的想法：把基本构造从jekyll换成nuxt.js。作为前端小白，这是个估计成功率为百分之十以下的大工程。希望我这篇记录到最后不会变成东逝水。
+
+## 建立develop分枝
+`git checkout -b develop`
+
+关于git里面develop分枝的说明可以参见此链接。
+https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
+<img src="/assets/post/2021-08-13/1.png" width=50%>
+
+
+## 新建nuxt项目
+使用`create—nuxt-app`来建立nuxt项目。
+`mkdir nuxt`
+npx create-nuxt-app --overwrite-dir .
+Since I can't create the nuxt project in a non-empty directory
+`npx create-nuxt-app .`
