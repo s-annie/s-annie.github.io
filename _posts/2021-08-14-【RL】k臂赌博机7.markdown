@@ -1,6 +1,6 @@
 ---
 layout: post
-title:【RL】k臂赌博机(7)・赌博机问题的梯度算法
+title: 【RL】k臂赌博机(7)・赌博机问题的梯度算法
 categories: Reinforcement-Learning
 ---
 
