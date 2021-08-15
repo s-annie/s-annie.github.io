@@ -19,4 +19,3 @@ IP或ICMP，TCP或UDP，TELNET或FTP，以及HTTP等都属于TCP/IP的协议。�
 [^1]: Internet Service Provider, 为个人，公司等提供互联网服务的供应商
 [^2]: Network Operation Center，网络操作中心
 [^3]: Internet Exchange，网络交换中心
-

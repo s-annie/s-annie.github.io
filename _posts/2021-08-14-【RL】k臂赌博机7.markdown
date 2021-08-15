@@ -1,7 +1,7 @@
 ---
 layout: post
-title: 【RL】k臂赌博机(7)・赌博机问题的梯度算法
-categories: Reinforcement-Learning
+title: 【强化学习导论】k臂赌博机问题(7)・赌博机问题的梯度算法
+categories: 强化学习
 ---
 
 在梯度算法中，我们考虑为每个动作$a$学习数字偏好，表示为$H_{t}(a)$。偏好越大，采取行动的次数越多。偏好在奖励方面没有解释。只有一种行为相对于另一种行为的相对偏好才是重要的。如果我们将1000添加到所有动作首选项，则对动作概率没有影响。动作概率是根据Softmax分布[^1]确定的。如下所示。
@@ -18,6 +18,4 @@ H_{t+1}(a)\doteq H_{t}(a)-\alpha(R_{t}-\overline R_{t})\pi_{t}(a),a \neq A_{t}$$
 其中$\alpha>0$是步长参数，$\overline R_{t} \in(R)$是所有奖励的平均值，包括时间$t$。$\overline R_{t}$作为比较奖励的基线，如果奖励高于基线，那么将来获取$A_{t}$的概率增加；如果奖励低于基线，则概率降低。
 
 
-[^1]: 参见链接 Sigmoid函数与Sigmoid函数
-
-[^2]: 参见连接 随机梯度算法
+[^1]: 参见链接: [Sigmoid函数与Sigmoid函数](https://s-annie.github.io/machine-learning/2021/08/15/ML-Softmax函数与Sigmoid函数.html)
