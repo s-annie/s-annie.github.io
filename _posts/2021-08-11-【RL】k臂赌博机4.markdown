@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 【RL】k臂赌博机(4)・增量实现
+title: 【强化学习导论】k臂赌博机问题(4)・样本平均方法的增量实现
 categories: Reinforcement-Learning
 ---
 [k臂赌博机(2)・$\epsilon$贪婪方法](https://s-annie.github.io/reinforcement-learning/2021/08/10/RL-k臂赌博机2.html)中提到过行动价值估算所用到的样本平均方法，本章讨论在具有恒定内存和恒定的时间步长的条件下如何计算平均值。  
