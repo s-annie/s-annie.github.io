@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 【ML】Sigmoid函数与Softmax函数
+title: 【机器学习】Sigmoid函数与Softmax函数
 categories: Machine-Learning
 ---
 ## Sigmoid函数
@@ -63,21 +63,21 @@ $$z_{k}=softmax(x_{k})=\frac{e^{x_{k}}}{\sum^{K}_{i=1}e^{x_{i}}}$$
 $$z_{k}\in(0, 1) \\
 \sum^{K}_{k=1}z_{k}=1$$
 
-为了简便起见，用$K$维向量$\bm x=[x1;...x_{k}]$来表示Softmax函数的输入。Softmax函数可以简写为
+为了简便起见，用$K$维向量$\boldsymbol x=[x1;...x_{k}]$来表示Softmax函数的输入。Softmax函数可以简写为
 
 $$\begin{aligned} \\
-\hat{\bm z} &= softmax(x) \\
+\hat{\boldsymbol z} &= softmax(x) \\
 &=\frac{1}{\sum^{K}_{k=1}e^{x_{k}}}\left[
 \begin{matrix}
 e^{x_{1}} \\
 \vdots\\
 e^{x_{k}} \\ 
 \end{matrix}\right] \\
-&= \frac{e^{\bm x}}{\sum^{K}_{k=1}e^{x_{k}}} \\
-&= \frac{e^{\bm x}}{\bm 1^{T}_{K}e^{\bm x}}
+&= \frac{e^{\boldsymbol x}}{\sum^{K}_{k=1}e^{x_{k}}} \\
+&= \frac{e^{\boldsymbol x}}{\boldsymbol 1^{T}_{K}e^{\boldsymbol x}}
 \end{aligned}$$
 
-其中$\bm 1_{K}$是$K$维的全1向量。
+其中$\boldsymbol 1_{K}$是$K$维的全1向量。
 
 ## 区别与应用
 简单来说，Sigmoid是输出为两个节点的二分类，针对**二项分布**；而Softmax是将这个二分类推广成拥有n个输出节点的n分类问题，针对**多项分布**。
