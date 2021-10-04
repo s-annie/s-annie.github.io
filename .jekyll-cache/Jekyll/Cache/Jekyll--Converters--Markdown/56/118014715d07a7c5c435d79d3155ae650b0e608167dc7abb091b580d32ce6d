@@ -1,0 +1,63 @@
+I"�<p>接着上次写的<a href="https://s-annie.github.io/2021/06/10/Test-Python-unittest之mock的基本使用.html">unittest之mock的基本使用</a>，这次写下如何使用<code class="language-plaintext highlighter-rouge">unittest.mock.patch</code>为mock打补丁。</p>
+
+<h2 id="关于patch">关于patch</h2>
+<p>使用mock可以将某个类，变量或者函数整体封装起来。而有些时候我们不希望将它们全部黑盒化，这时候就需要用patch（打补丁）来实现。mock提供三种装饰器：<code class="language-plaintext highlighter-rouge">patch()</code>, <code class="language-plaintext highlighter-rouge">patch.object()</code>, <code class="language-plaintext highlighter-rouge">patch.dict(）</code>。<code class="language-plaintext highlighter-rouge">patch.dict()</code>我还没有用过，所以只写一下<code class="language-plaintext highlighter-rouge">patch()</code>和<code class="language-plaintext highlighter-rouge">patch.object()</code>这两种。</p>
+
+<h3 id="patch">patch()</h3>
+<p><code class="language-plaintext highlighter-rouge">patch()</code>接受格式为<code class="language-plaintext highlighter-rouge">package.module.ClassName</code>补丁目标的文字列。在函数与语句的正文中，目标被打上一个新的对象。当函数和语句退出时补丁被撤销。</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> @patch<span class="o">(</span><span class="s1">'__main__.SomeClass'</span><span class="o">)</span>
+... def <span class="k">function</span><span class="o">(</span>normal_argument, mock_class<span class="o">)</span>:
+...     print<span class="o">(</span>mock_class is SomeClass<span class="o">)</span>
+
+<span class="o">&gt;&gt;&gt;</span> <span class="k">function</span><span class="o">(</span>None<span class="o">)</span>
+True
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">patch()</code>的开始与结束也可以通过<code class="language-plaintext highlighter-rouge">start()</code>和<code class="language-plaintext highlighter-rouge">stop()</code>来实现。个人觉得有时这种方法更加好用。</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> thing <span class="o">=</span> object<span class="o">()</span>
+<span class="o">&gt;&gt;&gt;</span> patcher <span class="o">=</span> patch<span class="o">(</span><span class="s1">'__main__'</span>.thing, <span class="nv">first</span><span class="o">=</span><span class="s1">'one'</span>, <span class="nv">second</span><span class="o">=</span><span class="s1">'two'</span><span class="o">)</span>
+<span class="o">&gt;&gt;&gt;</span> mock_thing <span class="o">=</span> patcher.start<span class="o">()</span>
+<span class="o">&gt;&gt;&gt;</span> mock_thing.first<span class="o">()</span>
+<span class="s1">'one'</span>
+<span class="o">&gt;&gt;&gt;</span> mock_thing.second<span class="o">()</span>
+<span class="s1">'two'</span>
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">patch()</code>也可以使用<code class="language-plaintext highlighter-rouge">return_value</code>和<code class="language-plaintext highlighter-rouge">side_effect</code>。以这些属性为关键词的字典可以通过<code class="language-plaintext highlighter-rouge">**</code>扩展到<code class="language-plaintext highlighter-rouge">patch()</code>的调用中。</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> config <span class="o">=</span> <span class="o">{</span><span class="s1">'method.return_value'</span>: 3, <span class="s1">'other.side_effect'</span>: KeyError<span class="o">}</span>
+<span class="o">&gt;&gt;&gt;</span> patch <span class="o">=</span> patch<span class="o">(</span><span class="s1">'__main__.thing'</span>, <span class="k">**</span>config<span class="o">)</span>
+<span class="o">&gt;&gt;&gt;</span> mock_thing <span class="o">=</span> patcher.start<span class="o">()</span>
+<span class="o">&gt;&gt;&gt;</span> mock_thing.method<span class="o">()</span>
+3
+<span class="o">&gt;&gt;&gt;</span> mock_thing.other<span class="o">()</span>
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  ...
+KeyError
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">patch()</code>中有个<code class="language-plaintext highlighter-rouge">TEST_PREFIX</code>属性，可以用来设定补丁所适用的前缀。</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> patch.TEST_PREFIX <span class="o">=</span> <span class="s2">"foo"</span>
+<span class="o">&gt;&gt;&gt;</span> value <span class="o">=</span> 3
+<span class="o">&gt;&gt;&gt;</span> @patch<span class="o">(</span><span class="s1">'__main__.value'</span>, <span class="s1">'not three'</span><span class="o">)</span>
+... class Thing:
+...     def foo_one<span class="o">(</span>self<span class="o">)</span>:
+            print<span class="o">(</span>value<span class="o">)</span>
+...     def two<span class="o">(</span>self<span class="o">)</span>:
+...         print<span class="o">(</span>value<span class="o">)</span>
+<span class="o">&gt;&gt;&gt;</span> Thing<span class="o">()</span>.foo_one<span class="o">()</span>
+<span class="s1">'not three'</span>
+<span class="o">&gt;&gt;&gt;</span> Thing<span class="o">()</span>.two<span class="o">()</span>
+3
+</code></pre></div></div>
+<h3 id="patchobject">patch.object</h3>
+<p><code class="language-plaintext highlighter-rouge">patch.object()</code>可以为某个特定类的变量或函数打补丁。和<code class="language-plaintext highlighter-rouge">patch()</code>大同小异，在我看来就是参数的不同而已。
+（而且我觉得它并不实用，因为我很少用到类变量或是类函数,更多的是通过实体。而有些时候需要在实体初始化的时候，直接为外部的类打上补丁，所以还是用<code class="language-plaintext highlighter-rouge">patch()</code>更多。）</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># attribute</span>
+<span class="o">&gt;&gt;&gt;</span> @patch.object<span class="o">(</span>SomeClass, <span class="s1">'attribute'</span>, sentinel.attribute<span class="o">)</span>
+... def test_attribute<span class="o">()</span>:
+...    assert SomeClass.attribute <span class="o">==</span> sentinel.attribute
+
+<span class="c"># method</span>
+<span class="o">&gt;&gt;&gt;</span> @patch.object<span class="o">(</span>SomeClass, <span class="s1">'static_method'</span><span class="o">)</span>
+... def test_method<span class="o">(</span>mock_method<span class="o">)</span>:
+...    SomeClass.static_method<span class="o">()</span>
+...    mock_method.assert_called_with<span class="o">()</span>
+</code></pre></div></div>
+:ET
