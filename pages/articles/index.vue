@@ -1,7 +1,7 @@
 <template>
   <v-html>
     <div>
-      <img src="../../content/images/moon.jpg" class="article-header"/>
+      <!-- <img src="../../content/images/moon.jpg" class="article-header"/> -->
     </div>
     <div v-for="p in articles" :key="p.date">
       <v-container fill-height class="post-area">
