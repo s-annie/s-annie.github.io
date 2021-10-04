@@ -1,0 +1,85 @@
+I"Y8<p><code class="language-plaintext highlighter-rouge">PlanningScene</code>类主要提供碰撞检查（collision check）和制约检查（constrain check）的接口。这篇文章为MoveIt官方教程的整理与实践内容。<br />
+原文：<a href="http://docs.ros.org/en/melodic/api/moveit_tutorials/html/doc/planning_scene/planning_scene_tutorial.html">MoveIt Tutorials: Planning Scene</a></p>
+
+<h2 id="setup">Setup</h2>
+<p><code class="language-plaintext highlighter-rouge">PlanningScene</code>可通过RobotModel，URDF或者SRDF来配置。</p>
+
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">robot_model_loader</span><span class="o">::</span><span class="n">RobotModelLoader</span> <span class="nf">robot_model_loader</span><span class="p">(</span><span class="s">"robot_description"</span><span class="p">);</span>
+<span class="n">robot_model</span><span class="o">::</span><span class="n">RobotModelPrt</span> <span class="n">kinematic_model</span> <span class="o">=</span> <span class="n">robot_model_loader</span><span class="p">.</span><span class="n">getModel</span><span class="p">();</span>
+<span class="n">planning_scene</span><span class="o">::</span><span class="n">PlanningScene</span> <span class="nf">planning_scene</span><span class="p">(</span><span class="n">kinematic_model</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="collision-checking--碰撞检查">Collision Checking  碰撞检查</h2>
+
+<h3 id="self-collision-checking-自我碰撞检查">Self-collision checking 自我碰撞检查</h3>
+<p>首先我们要检查当前状态下的机器人是否处于自我碰撞状态。我们构建一个CollisionRequest对象和一个CollisionResult对象，并将它们传递给碰撞检查函数。检查的对象为URDF中提供的碰撞网络。</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">collision_detection</span><span class="o">::</span><span class="n">CollisiontRequest</span> <span class="n">collisiion_request</span><span class="p">;</span>
+<span class="n">collision_detection</span><span class="o">::</span><span class="n">CollisionResult</span> <span class="n">collision_result</span><span class="p">;</span>
+<span class="n">planning_scene</span><span class="p">.</span><span class="n">checkSelfCollision</span><span class="p">(</span><span class="n">collision_request</span><span class="p">,</span> <span class="n">collision_result</span><span class="p">);</span>
+</code></pre></div></div>
+<p>如果只对Panda的手进行碰撞检查，可以通过在碰撞请求中添加组名来具体要求。</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">collision_request</span><span class="p">.</span><span class="n">group_name</span> <span class="o">=</span> <span class="s">"hand"</span><span class="p">;</span>
+<span class="n">current_state</span><span class="p">.</span><span class="n">setToRandomPositions</span><span class="p">();</span>
+<span class="n">collision_result</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+<span class="n">planning_scene</span><span class="p">.</span><span class="n">checkSelfCollision</span><span class="p">(</span><span class="n">collision_request</span><span class="p">,</span> <span class="n">collision_result</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="allowedcollisionmatrixacm-允许碰撞矩阵">AllowedCollisionMatrix（ACM） 允许碰撞矩阵</h3>
+<p>ACM告诉碰撞世界<strong>忽略</strong>某些对象之间的碰撞。</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">collision_detection</span><span class="o">::</span><span class="n">AllowedCollisionMatrix</span> <span class="n">acm</span> <span class="o">=</span> <span class="n">planning_scene</span><span class="p">.</span><span class="n">getAllowedCollisionMatrix</span><span class="p">();</span>
+<span class="n">robot_state</span><span class="o">::</span><span class="n">RobotState</span> <span class="n">copied_state</span> <span class="o">=</span> <span class="n">planning_scene</span><span class="p">.</span><span class="n">getCurrentState</span><span class="p">();</span>
+
+<span class="n">collision_detection</span><span class="o">::</span><span class="n">CollisionResult</span><span class="o">::</span><span class="n">ContactMap</span><span class="o">::</span><span class="n">const_iterator</span> <span class="n">it2</span><span class="p">;</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">it2</span> <span class="o">=</span> <span class="n">collision_result</span><span class="p">.</span><span class="n">contacts</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">it2</span> <span class="o">!=</span> <span class="n">collision_result</span><span class="p">.</span><span class="n">contacts</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">it2</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="n">acm</span><span class="p">.</span><span class="n">setEntry</span><span class="p">(</span><span class="n">it2</span><span class="o">-&gt;</span><span class="n">first</span><span class="p">.</span><span class="n">first</span><span class="p">,</span> <span class="n">it2</span><span class="o">-&gt;</span><span class="n">first</span><span class="p">,</span><span class="n">second</span><span class="p">,</span> <span class="nb">true</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">collision_result</span><span class="p">.</span><span class="n">clear</span><span class="p">();</span>
+<span class="n">planning_scene</span><span class="p">.</span><span class="n">checkSelfCollision</span><span class="p">(</span><span class="n">collision_request</span><span class="p">,</span> <span class="n">collision_result</span><span class="p">,</span> <span class="n">copied_state</span><span class="p">,</span> <span class="n">acm</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="full-collision-checking--环境碰撞检查">Full Collision Checking  环境碰撞检查</h3>
+<p>我们可以使用<code class="language-plaintext highlighter-rouge">checkCollision</code>来同时检查自我碰撞与环境碰撞，有助于使机器人进一步远离环境中的障碍物。代码在这里就省略了。</p>
+
+<h2 id="制约检查">制约检查</h2>
+<p><code class="language-plaintext highlighter-rouge">PlanningScene</code>可以调用检查制约条件的函数。这些制约可以是两种类型。（a）从运动学制约<code class="language-plaintext highlighter-rouge">KinematicContraint</code>集合中选择，即<code class="language-plaintext highlighter-rouge">JointConstraint</code>，<code class="language-plaintext highlighter-rouge">PositionContraint</code>，<code class="language-plaintext highlighter-rouge">OrientationConstraint</code>和<code class="language-plaintext highlighter-rouge">VisibilityConstraint</code>（b）通过回调指定的用户定义制约。</p>
+
+<p>我们首先看一个简单的运动学制约的例子。</p>
+
+<h3 id="运动学制约">运动学制约</h3>
+<p>我们在panda_arm组的末端执行器上定义一个简单的位置和方向制约。<code class="language-plaintext highlighter-rouge">moveit_core</code>的<code class="language-plaintext highlighter-rouge">kinematic_constraints</code>目录下的<code class="language-plaintext highlighter-rouge">utils.h</code>文件中有一些函数可供使用。</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">end_effector_name</span> <span class="o">=</span> <span class="n">joint_model_group</span><span class="o">-&gt;</span><span class="n">getLintModelNames</span><span class="p">().</span><span class="n">back</span><span class="p">();</span>
+
+<span class="n">geometry_msgs</span><span class="o">::</span><span class="n">PoseStamped</span> <span class="n">desired_pose</span><span class="p">;</span>
+<span class="n">desired_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">orient</span><span class="p">.</span><span class="n">w</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
+<span class="n">desired_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">;</span>
+<span class="n">desired_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.185</span><span class="p">;</span>
+<span class="n">desired_pose</span><span class="p">.</span><span class="n">pose</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">;</span>
+<span class="n">desired_pose</span><span class="p">.</span><span class="n">header</span><span class="p">.</span><span class="n">frame_id</span> <span class="o">=</span> <span class="s">"panda_link0"</span><span class="p">;</span>
+
+<span class="n">moveit_msgs</span><span class="o">::</span><span class="n">Contraints</span> <span class="n">goal_constraint</span> <span class="o">=</span> <span class="n">kinematic_constraints</span><span class="o">::</span><span class="n">constructGoalConstraints</span><span class="p">(</span><span class="n">end_effetor_name</span><span class="p">,</span> <span class="n">desired_pose</span><span class="p">);</span>
+</code></pre></div></div>
+<p>现在，我们可以使用<code class="language-plaintext highlighter-rouge">PlanningScene</code>类中的<code class="language-plaintext highlighter-rouge">isStateConstrained</code>函数来检查一个状态与这个制约。</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">copied_state</span><span class="p">.</span><span class="n">setToRandomPositions</span><span class="p">();</span>
+<span class="n">copied_state</span><span class="p">.</span><span class="n">update</span><span class="p">();</span>
+<span class="kt">bool</span> <span class="n">constrained</span>  <span class="o">=</span> <span class="n">planing_scene</span><span class="p">.</span><span class="n">isStateConstrained</span><span class="p">(</span><span class="n">copied_state</span><span class="p">,</span> <span class="n">goal_contraint</span><span class="p">);</span>
+<span class="n">ROS_INFO_STREAM</span><span class="p">(</span><span class="s">"Random state is "</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">constrained</span> <span class="o">?</span> <span class="s">"constrained"</span> <span class="o">:</span> <span class="s">"not constrained"</span><span class="p">));</span>
+</code></pre></div></div>
+<p>还有一种更有效的检查制约的方法（比如在计划器内反复检查同一个制约）我们首先构建一个<code class="language-plaintext highlighter-rouge">KinematicConstrainSet</code>，对ROS的制约信息进行预处理，并将其设置为快速处理。</p>
+
+<h3 id="用户定义的制约">用户定义的制约</h3>
+<p>给PlanningScene类指定自定义制约，可以通过使用<code class="language-plaintext highlighter-rouge">setStateFeasibilityPredicte</code>函数指定一个回调来实现。下面这个例子是检查panda_joint1处于正还是负的角度。</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="nf">stateFeasibilityTestExample</span><span class="p">(</span><span class="k">const</span> <span class="n">robot_state</span><span class="o">::</span><span class="n">RobotState</span><span class="o">&amp;</span> <span class="n">kinematic_state</span><span class="p">,</span> <span class="kt">bool</span> <span class="n">verbose</span><span class="p">)</span>
+<span class="p">{</span>
+	<span class="k">const</span> <span class="kt">double</span><span class="o">*</span> <span class="n">joint_values</span> <span class="o">=</span> <span class="n">kinematic_state</span><span class="p">.</span><span class="n">getJointPositions</span><span class="p">(</span><span class="s">"panda_joint1"</span><span class="p">);</span>
+	<span class="k">return</span> <span class="p">(</span><span class="n">joint_values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">planning_scene</span><span class="p">.</span><span class="n">setStateFeasibilityPredicte</span><span class="p">(</span><span class="n">stateFeasibilityTestExample</span><span class="p">);</span>
+</code></pre></div></div>
+<p>现在，只要调用isStateFeasible，这个用户定义的回调就会被调用。</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="n">state_feasible</span> <span class="o">=</span> <span class="n">planning_scene</span><span class="p">.</span><span class="n">isStateFeasible</span><span class="p">(</span><span class="n">copied_state</span><span class="p">);</span>
+<span class="n">ROS_INFO_STREAM</span><span class="p">(</span><span class="s">"Random state is "</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="n">state_feasible</span> <span class="o">?</span> <span class="s">"vible"</span> <span class="o">:</span> <span class="s">"not feasible"</span><span class="p">));</span>
+</code></pre></div></div>
+<p>每当调用<code class="language-plaintext highlighter-rouge">isStateValid</code>时，都会进行三次检查。（a）碰撞检查（b）制约检查和（c）使用用户定义的回调的可行性检查。</p>
+:ET

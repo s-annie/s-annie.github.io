@@ -1,0 +1,2 @@
+I"<p>接着上次写的<a href="https://s-annie.github.io/2021/06/10/Test-Python-unittest之mock的基本使用.html">unittest之mock的基本使用</a>，这次写下如何使用<code class="language-plaintext highlighter-rouge">unittest.mock.patch</code>为mock打补丁。</p>
+:ET

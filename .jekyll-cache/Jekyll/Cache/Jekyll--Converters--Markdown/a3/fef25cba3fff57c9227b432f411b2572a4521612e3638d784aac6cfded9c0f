@@ -1,0 +1,37 @@
+I"�<p>WebSocket是一种在网络上进行低成本双向通信的机制。最初HTTP是网络上的唯一通信选择，然而HTTP的长时间轮询（Polling）很浪费时间，所以WebSocket协议应运而生。</p>
+
+<p>WebSocket通过HTTP在客户端和服务器之间交换信息建立连接（TCP），在建立的连接上进行低成本的双向通信。大致分为以下几个步骤。</p>
+
+<ol>
+  <li>连接的建立</li>
+</ol>
+
+<p>WebSocket开始时，客户端向服务器发送请求以建立连接。请求和响应都是HTTP格式。
+客户端（比如说一个浏览器）发送一个以下的请求：</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>GET /resource HTTP/1.1
+Host: main.com
+Upgrade: websocket
+Connection: upgrade
+Sec-WebSocket-Version: 13
+Sec-WebSocket-Key: skaurnfiew02=
+</code></pre></div></div>
+<p>这是对一个名为main.com的主机上名为/resource的相对URI的请求。方法名称（GET），请求URI（/resource），和名为Request-Line的协议版本（HTTP1.1）出现在第一行，这是个完全正确的HTTP请求。其特点是有Upgrade和Connection，表示协议从HTTP升级到WebSocket。Sec-WebSocket-Version从客户端发送到服务器，以表明连接的协议版本。目前WebSocket的版本是13。Sec-Websocket-key用于证明与特定客户建立连接。服务器根据Sec-Websocket-key中指定的值生成一个新的响应值，存在Sec-WebSocket-Accept里返回。以下是来自服务器的响应。</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>HTTP/1.1 101 OK 
+Upgrade: websocket
+Connection: upgrade
+Sec-WebSocket-Accept: yweuw6839i4=
+</code></pre></div></div>
+<p>第一行为Status-Line，由协议版本（HTTP/1.1），状态代码（101）和文本短语（OK）组成。当收到这个响应时，WebSocket连接就建立了，可以进行双向通信。建立连接的一系列过程被称为WebSocket开放握手（opening handshaking）</p>
+
+<ol>
+  <li>双向交流的实现</li>
+</ol>
+
+<p>握手后，数据在已建立的TCP连接上进行双向交换。在WebSocket中，数据是以帧（frame）的单位发送的。想要在Web应用中发送的数据存储在<code class="language-plaintext highlighter-rouge">Payload Data</code>部分里。其余的数据最小2字节，最大14字节，和HTTP相比成本低得多（HTTP的请求头就可以达到几百字节）。数据帧可以在握手完成后，发送close帧之前的任何时间从客户或服务器传输。</p>
+
+<ol>
+  <li>适合使用WebSocket的服务器</li>
+</ol>
+
+<p>WebSocket在客户端和服务器之间保持TCP连接，有多少服务进程就有多少客户端。而具有阻塞式I/O的服务器进程一次只能与一个客户端建立连接，所以两者是不兼容的。所以在使用WebSocket时通常使用具有非阻塞性I/O的服务器，在这方面Node.js是最著名的，以及经常为用作反向代理的nginx也支持WebSocket。</p>
+:ET

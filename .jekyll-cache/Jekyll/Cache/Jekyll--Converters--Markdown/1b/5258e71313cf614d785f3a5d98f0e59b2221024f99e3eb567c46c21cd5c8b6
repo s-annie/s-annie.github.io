@@ -1,0 +1,2 @@
+I"�<p>WebSocket是一种在网络上进行低成本双向通信的机制。最初HTTP是网络上的唯一通信选择，然而HTTP的长时间轮询（Polling）很浪费时间，所以WebSocket协议应运而生。</p>
+:ET
