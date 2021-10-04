@@ -1,0 +1,32 @@
+[
+  {
+    "name": "articles",
+    "path": "/articles",
+    "component": "/Users/rosie/s-annie.github.io/pages/articles/index.vue",
+    "chunkName": "pages/articles/index"
+  },
+  {
+    "name": "articles-page-number",
+    "path": "/articles/page/:number?",
+    "component": "/Users/rosie/s-annie.github.io/pages/articles/page/_number.vue",
+    "chunkName": "pages/articles/page/_number"
+  },
+  {
+    "name": "articles-slug",
+    "path": "/articles/:slug",
+    "component": "/Users/rosie/s-annie.github.io/pages/articles/_slug.vue",
+    "chunkName": "pages/articles/_slug"
+  },
+  {
+    "name": "articles-tags-tag",
+    "path": "/articles/:tags/:tag?",
+    "component": "/Users/rosie/s-annie.github.io/pages/articles/_tags/_tag.vue",
+    "chunkName": "pages/articles/_tags/_tag"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/rosie/s-annie.github.io/pages/index.vue",
+    "chunkName": "pages/index"
+  }
+]
