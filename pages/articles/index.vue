@@ -106,7 +106,7 @@ export default {
 }
 .post-tag-group{
   text-align: left;
-  margin-left: -6px;
+  margin-left: -3px;
 }
 .post-tag {
   font-family: monospace;
