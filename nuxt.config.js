@@ -6,8 +6,8 @@ export default {
     base: '/',
   },
   head: {
-    titleTemplate: '%s - myblog',
-    title: 'myblog',
+    titleTemplate: '%s - The Robots of Dawn',
+    title: 'The Robots of Dawn',
     htmlAttrs: {
       lang: 'en'
     },
