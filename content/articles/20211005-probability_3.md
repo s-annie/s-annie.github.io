@@ -25,6 +25,6 @@ $$\alpha_{4} = E(X-\mu)^{4}/\sigma^{4}$$
 $$
 \begin{aligned}
 E(x-\mu)^{4}&=E(X^{4})-4\mu E(X^{3})+6\mu^{2} E(X^{2})-4\mu^{3} E(X) + \mu^{4} \\\\
-&=E(X^{4})-4\mu E(X^{3s})+6\mu^{2} E(X^{2})-3\mu^{4}
+&=E(X^{4})-4\mu E(X^{3})+6\mu^{2} E(X^{2})-3\mu^{4}
 \end{aligned}
 $$
