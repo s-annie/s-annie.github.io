@@ -37,15 +37,12 @@ export default {
 </script>
 
 <style>
-.nuxt-content {
-  font-family: 'Noto Sans SC', monospace, sans-serif;
-}
 .post-tag {
   margin-left: 10px;
 }
 .post-title {
-  font-family: 'Noto Sans SC', monospace, sans-serif;
-  font-size: 24px;
+  font-family: 'Noto Sans SC', RaleWay, sans-serif;
+  /* font-size: 24px; */
   color: black;
   margin-bottom: -1px;
 }
@@ -55,5 +52,24 @@ export default {
 .post-date{
   font-family: Raleway;
   font-size: 15px;
+}
+.nuxt-content p, h1 {
+  font-family: 'Noto Sans SC', RaleWay, sans-serif;
+}
+.nuxt-content h1 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.nuxt-content h2 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.nuxt-content h3 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.nuxt-content h4 {
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 </style>

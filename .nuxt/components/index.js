@@ -1,8 +1,8 @@
-export const Footer = () => import('../../components/footer.vue' /* webpackChunkName: "components/footer" */).then(c => wrapFunctional(c.default || c))
-export const Header = () => import('../../components/header.vue' /* webpackChunkName: "components/header" */).then(c => wrapFunctional(c.default || c))
-export const Navigation = () => import('../../components/navigation.vue' /* webpackChunkName: "components/navigation" */).then(c => wrapFunctional(c.default || c))
-export const Post = () => import('../../components/post.vue' /* webpackChunkName: "components/post" */).then(c => wrapFunctional(c.default || c))
-export const Sidebar = () => import('../../components/sidebar.vue' /* webpackChunkName: "components/sidebar" */).then(c => wrapFunctional(c.default || c))
+export { default as Footer } from '../../components/footer.vue'
+export { default as Header } from '../../components/header.vue'
+export { default as Navigation } from '../../components/navigation.vue'
+export { default as Post } from '../../components/post.vue'
+export { default as Sidebar } from '../../components/sidebar.vue'
 
 // nuxt/nuxt.js#8607
 function wrapFunctional(options) {

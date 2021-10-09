@@ -47,6 +47,9 @@
 </template>
 
 <script>
+// import remark from "remark"
+// import excerpt from "remark-excerpt"
+
 export default {
   layout: 'articles',
   created () {
@@ -67,8 +70,15 @@ export default {
                         .fetch()
     const nextPage = tenArticles.length === 10
     const articles = nextPage ? tenArticles.slice(0, -1) : tenArticles
-    return { nextPage, articles}
-  }
+
+    return { nextPage, articles }
+  },
+  // methods: {
+  //   getExcerpt(p) {
+  //     const result = remark().use(excerpt).process(p)
+  //     return result
+  //   }
+  // }
 }
 </script>
 
@@ -79,6 +89,22 @@ export default {
 }
 .nuxt-content p {
   font-family: 'Noto Sans SC', RaleWay, sans-serif;
+}
+.nuxt-content h1 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.nuxt-content h2 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.nuxt-content h3 {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.nuxt-content h4 {
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 .v-btn {
   transform: scale(0.92);

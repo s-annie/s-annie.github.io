@@ -12,16 +12,16 @@
     "chunkName": "pages/articles/page/_number"
   },
   {
+    "name": "articles-tags-tag",
+    "path": "/articles/tags/:tag?",
+    "component": "/Users/rosie/s-annie.github.io/pages/articles/tags/_tag.vue",
+    "chunkName": "pages/articles/tags/_tag"
+  },
+  {
     "name": "articles-slug",
     "path": "/articles/:slug",
     "component": "/Users/rosie/s-annie.github.io/pages/articles/_slug.vue",
     "chunkName": "pages/articles/_slug"
-  },
-  {
-    "name": "articles-tags-tag",
-    "path": "/articles/:tags/:tag?",
-    "component": "/Users/rosie/s-annie.github.io/pages/articles/_tags/_tag.vue",
-    "chunkName": "pages/articles/_tags/_tag"
   },
   {
     "name": "index",

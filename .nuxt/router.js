@@ -6,8 +6,8 @@ import scrollBehavior from './router.scrollBehavior.js'
 
 const _5b4207a9 = () => interopDefault(import('../pages/articles/index.vue' /* webpackChunkName: "pages/articles/index" */))
 const _9ef4053e = () => interopDefault(import('../pages/articles/page/_number.vue' /* webpackChunkName: "pages/articles/page/_number" */))
+const _5b5da2e8 = () => interopDefault(import('../pages/articles/tags/_tag.vue' /* webpackChunkName: "pages/articles/tags/_tag" */))
 const _598b6661 = () => interopDefault(import('../pages/articles/_slug.vue' /* webpackChunkName: "pages/articles/_slug" */))
-const _e9e65d6a = () => interopDefault(import('../pages/articles/_tags/_tag.vue' /* webpackChunkName: "pages/articles/_tags/_tag" */))
 const _2e6f14b9 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
@@ -30,13 +30,13 @@ export const routerOptions = {
     component: _9ef4053e,
     name: "articles-page-number"
   }, {
+    path: "/articles/tags/:tag?",
+    component: _5b5da2e8,
+    name: "articles-tags-tag"
+  }, {
     path: "/articles/:slug",
     component: _598b6661,
     name: "articles-slug"
-  }, {
-    path: "/articles/:tags/:tag?",
-    component: _e9e65d6a,
-    name: "articles-tags-tag"
   }, {
     path: "/",
     component: _2e6f14b9,
