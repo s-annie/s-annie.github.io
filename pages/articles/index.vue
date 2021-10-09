@@ -98,6 +98,7 @@ export default {
 .nuxt-content h2 {
   margin-top: 10px;
   margin-bottom: 5px;
+  font-family: 'Noto Sans SC', monospace, sans-serif;
 }
 .nuxt-content h3 {
   margin-top: 10px;
