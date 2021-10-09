@@ -1,7 +1,7 @@
 <template>
   <v-main>
     <v-row no-gutters align="start">
-      <h1 class="post-title">{{ post.title }}</h1>
+      <p class="post-title">{{ post.title }}</h1>
     </v-row>
     <v-row align="start" no-gutters>
       <v-icon class="post-date-icon">mdi-calendar-month</v-icon>
@@ -41,8 +41,8 @@ export default {
   margin-left: 10px;
 }
 .post-title {
-  font-family: 'Noto Sans SC', RaleWay, sans-serif;
-  /* font-size: 24px; */
+  font-family: 'Noto Sans SC', monospace, sans-serif;
+  font-size: 24px;
   color: black;
   margin-bottom: -1px;
 }

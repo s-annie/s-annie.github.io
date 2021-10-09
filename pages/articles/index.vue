@@ -28,7 +28,8 @@
           <v-col v-if="p.image" />
           <v-col>
             <v-row no-gutters>
-              <p class="post-excerpt"><nuxt-content :document="{ body: p.excerpt }" style="font-family: 'RaleWay';" /></p>
+              <!-- <p class="post-excerpt"><nuxt-content :document="{ body: p.excerpt }" style="font-family: 'RaleWay';" /></p> -->
+              <p class="post-excerpt">{{ p.excerpt }}</p>
             </v-row>
           </v-col>
         </v-row>
