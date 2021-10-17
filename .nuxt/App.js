@@ -8,10 +8,11 @@ import NuxtBuildIndicator from './components/nuxt-build-indicator'
 
 import '../node_modules/prismjs/themes/prism.css'
 
+import _309dff80 from '../layouts/article.vue'
 import _0e6f0833 from '../layouts/articles.vue'
 import _6f6c098b from '../layouts/default.vue'
 
-const layouts = { "_articles": sanitizeComponent(_0e6f0833),"_default": sanitizeComponent(_6f6c098b) }
+const layouts = { "_article": sanitizeComponent(_309dff80),"_articles": sanitizeComponent(_0e6f0833),"_default": sanitizeComponent(_6f6c098b) }
 
 export default {
   render (h, props) {
