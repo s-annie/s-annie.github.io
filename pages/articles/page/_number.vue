@@ -32,10 +32,10 @@
     </div>
     <v-row>
       <nuxt-link :to="prevLink" style="text-decoration: none;" >
-        <p class="prev-link" > Prev page << </p></nuxt-link>
+        <p class="prev-link" > Prev page</p></nuxt-link>
       <v-spacer></v-spacer>
       <nuxt-link v-if="nextPage" :to="`/articles/page/${ pageNo + 1 }`" style="text-decoration: none;">
-        <p class="prev-link" > >> Next page</p></nuxt-link>
+        <p class="prev-link" >Next page</p></nuxt-link>
     </v-row>
     </v-main>
 </template>>

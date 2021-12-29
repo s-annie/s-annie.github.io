@@ -60,9 +60,6 @@ export default {
       })
     }
   },
-//  beforeMount(){
-//     window.location.reload();
-//  }
 }
 </script>
 
@@ -97,9 +94,10 @@ export default {
   font-family: 'Noto Sans SC', monospace, sans-serif;
   font-size: 24px;
   font-weight: 200;
-  border-left: 6px solid #696969;
+  border-left: 6px solid #F08080;
+  background: #f4f4f4;
   text-indent: 5px;
-  border-bottom: 6px solid #696969;
+  // border-bottom: 6px solid #696969;
 }
 .nuxt-content h3 {
   margin-top: 10px;
@@ -107,7 +105,7 @@ export default {
   font-family: 'Noto Sans SC', monospace, sans-serif;
   font-size: 20px;
   font-weight: 200;
-  border-bottom: 5px double #696969;
+  border-bottom: 3px solid #F08080;
 }
 .nuxt-content h4 {
   margin-top: 10px;

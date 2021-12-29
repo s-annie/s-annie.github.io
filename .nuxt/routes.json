@@ -3,30 +3,35 @@
     "name": "articles",
     "path": "/articles",
     "component": "/Users/rosie/s-annie.github.io/pages/articles/index.vue",
-    "chunkName": "pages/articles/index"
+    "chunkName": "pages/articles/index",
+    "_name": "_5b4207a9"
   },
   {
     "name": "articles-page-number",
     "path": "/articles/page/:number?",
     "component": "/Users/rosie/s-annie.github.io/pages/articles/page/_number.vue",
-    "chunkName": "pages/articles/page/_number"
+    "chunkName": "pages/articles/page/_number",
+    "_name": "_9ef4053e"
   },
   {
     "name": "articles-tags-tag",
     "path": "/articles/tags/:tag?",
     "component": "/Users/rosie/s-annie.github.io/pages/articles/tags/_tag.vue",
-    "chunkName": "pages/articles/tags/_tag"
+    "chunkName": "pages/articles/tags/_tag",
+    "_name": "_5b5da2e8"
   },
   {
     "name": "articles-slug",
     "path": "/articles/:slug",
     "component": "/Users/rosie/s-annie.github.io/pages/articles/_slug.vue",
-    "chunkName": "pages/articles/_slug"
+    "chunkName": "pages/articles/_slug",
+    "_name": "_598b6661"
   },
   {
     "name": "index",
     "path": "/",
     "component": "/Users/rosie/s-annie.github.io/pages/index.vue",
-    "chunkName": "pages/index"
+    "chunkName": "pages/index",
+    "_name": "_2e6f14b9"
   }
 ]
