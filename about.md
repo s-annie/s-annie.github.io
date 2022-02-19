@@ -4,6 +4,6 @@ title: About
 permalink: /about/
 ---
 
-I'm Programmer for Python & Django. I've made quite a few web apps, especially on Django. Now, I am doing more on backend.
-
-email: agus[at]python.web.id
+My name is Annie and I am a programmer working in robotics fields now. 
+This website is used to record my daily software development activities.
+My major concerns including linux, Python, ROS, and etc. Keep moveing forward!!
