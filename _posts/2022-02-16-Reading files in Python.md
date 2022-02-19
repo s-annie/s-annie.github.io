@@ -4,7 +4,7 @@ categories: [python]
 ---
 ## Overview
 
-## Opening the files
+### Opening the files
 There are two methods to open and close the files, `open()`&`close()`, `with`&`open()`. `with` statement automatically takes care of closing the file once it leaved the block. So mainly I will use this one.
 
 ```python
@@ -14,7 +14,7 @@ with open(path, encoding='utf_8') as f:
 # <class '_io.TextIOWrapper'>
 ```
 
-### `open()`mode argument
+#### `open()`mode argument
 The mode argument represents how you want to open the file.  
 The default and most common is 'r', which represents opening the file in read-only mode.
 Commonly used ones are the following: 
@@ -25,7 +25,7 @@ Commonly used ones are the following:
 |'w'|Open for writing|
 |'rb' or 'wb'|Open in binary mode|
 
-## Reading the files
+### Reading the files
 `read()`, `readlines()` and `readlines()` are used to read a file.  
 `read()` gets all the contents in the file as type '<str>'.
 ```python
@@ -39,7 +39,7 @@ with open(path, 'r') as f:
 # line 2
 # line 3
 ```
-While `readlines()' reads the entire file as `<list>`.
+While `readlines()` reads the entire file as `<list>`.
 ```python
 with open(path) as f:
     l = f.readlines()
@@ -58,7 +58,6 @@ with open(path) as f:
 f = open(path)
 list(f)
 ```
-``
 Using `readline()` with argument can read at most size number of chracters from the line.
 ```python
 with open(path) as f:
