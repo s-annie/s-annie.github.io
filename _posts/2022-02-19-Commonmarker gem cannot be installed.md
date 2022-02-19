@@ -1,6 +1,6 @@
 ---
 layout: post
-categories: [ruby, jekyll]
+categories: [ruby, jekyll, toubleshooting]
 ---
 
 ### Error
@@ -15,6 +15,7 @@ Make sure that `gem install commonmarker -v '0.16.0'` succeeds before bundling.
 ### Solution
 XCode's ruby framework is broken.
 ```bash
-cd /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/include/ruby-2.6.0ln -sf ln -sf ln -sf universal-darwin20 universal-darwin19
+cd /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.1.sdk/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/include/ruby-2.6.0
+ln -sf universal-darwin20 universal-darwin19
 ```
 Credits to https://stackoverflow.com/a/65481809.
