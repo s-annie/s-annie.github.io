@@ -27,7 +27,7 @@ Commonly used ones are the following:
 
 ### Reading the files
 `read()`, `readlines()` and `readlines()` are used to read a file.  
-`read()` gets all the contents in the file as type '<str>'.
+`read()` gets all the contents in the file as type <str>.
 ```python
 path = '/data/test.txt'
 with open(path, 'r') as f:
@@ -39,7 +39,7 @@ with open(path, 'r') as f:
 # line 2
 # line 3
 ```
-While `readlines()` reads the entire file as `<list>`.
+While `readlines()` reads the entire file as <list>.
 ```python
 with open(path) as f:
     l = f.readlines()
