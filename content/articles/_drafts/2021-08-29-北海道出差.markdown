@@ -1,5 +1,0 @@
----
-layout: post
-title: 【闲聊】北海道出差
-categories: life
----
