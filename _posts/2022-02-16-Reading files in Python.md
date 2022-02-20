@@ -1,5 +1,6 @@
 ---
 layout: post
+title: Reading files in Python
 categories: [python]
 ---
 ## Overview

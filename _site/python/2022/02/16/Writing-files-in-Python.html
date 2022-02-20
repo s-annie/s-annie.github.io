@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link rel="shortcut icon" href="/static/img/favicon.ico" /> -->
-    <title>Ubuntu - Annie's repository</title>
+    <title>Writing files in Python - Annie's repository</title>
     <meta name="author" content="s-annie" />
-    <meta name="description" content="Ubuntu" />
-    <meta name="keywords" content="Ubuntu, Annie's repository, ubuntu" />
+    <meta name="description" content="Writing files in Python" />
+    <meta name="keywords" content="Writing files in Python, Annie's repository, python" />
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
     <meta content="" property="fb:app_id">
     <meta content="Annie's repository" property="og:site_name">
@@ -16,7 +16,7 @@
     
 
     
-      <meta content="Ubuntu" property="og:title">
+      <meta content="Writing files in Python" property="og:title">
       <meta content="article" property="og:type">
     
 
@@ -25,19 +25,24 @@
     
 
     
-      <meta content="http://localhost:4000/category/ubuntu" property="og:url">
+      <meta content="http://localhost:4000/python/2022/02/16/Writing-files-in-Python.html" property="og:url">
     
 
+    
+      <meta content="2022-02-16T00:00:00+09:00" property="article:published_time">
+      <meta content="http://localhost:4000/about/" property="article:author">
     
 
     
 
     
       
-        <meta content="ubuntu" property="article:section">
+        <meta content="python" property="article:section">
       
     
 
+    
+      
     
 
     <meta name="twitter:card" content="summary">
@@ -45,11 +50,11 @@
     <meta name="twitter:creator" content="@">
 
     
-      <meta name="twitter:title" content="Ubuntu">
+      <meta name="twitter:title" content="Writing files in Python">
     
 
     
-      <meta name="twitter:url" content="http://localhost:4000/category/ubuntu">
+      <meta name="twitter:url" content="http://localhost:4000/python/2022/02/16/Writing-files-in-Python.html">
     
 
     
@@ -105,45 +110,150 @@
       </div>
       <div class="col-sm-8 col-offset-1 main-layout">
         <header class="post-header">
-  <h1 class="post-title">Articles by category: ubuntu</h1>
+  <h1 class="post-title">Writing files in Python</h1>
 </header>
 
-<div class="post-content">
-  <hr />
-  
-    
-    
-      
-        <a href="/category/python" class="btn btn-sm btn-default btn-tags">python</a>
-      
-    
-  
-    
-    
-      
-        <a href="/category/ruby" class="btn btn-sm btn-default btn-tags">ruby</a>
-      
-    
-  
-    
-    
-      
-        <a href="/category/jekyll" class="btn btn-sm btn-default btn-tags">jekyll</a>
-      
-    
-  
-    
-    
-      
-        <a href="/category/toubleshooting" class="btn btn-sm btn-default btn-tags">toubleshooting</a>
-      
-    
-  
+<span class="time">16 Feb 2022</span>
 
-  <hr />
+  <span class="categories">
+    &raquo; <a href="/category/python">python</a>
+  </span>
+
+
+<div class="content">
+  <div class="post"><h3 id="writing-to-a-file">Writing to a file</h3>
+<p><code class="language-plaintext highlighter-rouge">open()</code> a file with mode argument ‘w’. If the file does not exist the directory, a new file will be created. If the file already exists, it will be overwritten.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">path_w</span> <span class="o">=</span> <span class="s">'/data/src/test_w.txt'</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s">'New file'</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_w</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> 
+</code></pre></div></div>
+<p>A file object has two method for writing. <code class="language-plaintext highlighter-rouge">write()</code> and <code class="language-plaintext highlighter-rouge">writelines()</code>.<br />
+<code class="language-plaintext highlighter-rouge">write()</code> only takes string as argument, while <code class="language-plaintext highlighter-rouge">writelines()</code> can be passed with list.<br />
+If you want to start a new line of each element in the list, below is an example.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="s">'One'</span><span class="p">,</span> <span class="s">'Two'</span><span class="p">,</span> <span class="s">'Three'</span><span class="p">]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_w</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">'w'</span><span class="p">)</span> <span class="k">as</span> <span class="p">:</span>
+    <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">'</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+</code></pre></div></div>
+<h3 id="writing-to-a-new-and-only-a-new-file">Writing to a new and only a new file.</h3>
+<p>Because using ‘w’ writes to any file specified in the path, overwritting mistakes are easily made. 
+Using mode ‘x’ can avoid it happens. Only when a file does not exist, a new one will be created and written.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_w</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">'x'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="k">except</span> <span class="nb">FileExistsError</span><span class="p">:</span>
+    <span class="k">pass</span>
+</code></pre></div></div>
+<h3 id="adding-to-a-file">Adding to a file</h3>
+<p>Using mode ‘a’ adds to the specified file.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_w</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">'a'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="s">'</span><span class="se">\n</span><span class="s">Test'</span><span class="p">)</span>   <span class="c1"># \n starts a new line
+</span></code></pre></div></div>
+<h4 id="example-adding-to-a-specified-line-in-the-file">Example: Adding to a specified line in the file</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">target_line</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path_w</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">"r+"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="p">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="n">lines</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s">"This is a new line</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+    <span class="n">f</span><span class="p">.</span><span class="n">writelines</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+</code></pre></div></div>
+</div>
+  <div class="share-page">
+  <span style="float: left;">Share this on &rarr;&nbsp;&nbsp;</span>
+
+  <!-- Twitter -->
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+  <!-- Facebook -->
+  <div class="fb-share-button" data-href="http://localhost:4000/python/2022/02/16/Writing-files-in-Python.html" data-layout="button_count" style="position: relative; top: -8px; left: 3px;"></div>
+</div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+</div>
+
+
   
-    <p>There are no posts in this categories.</p>
+    
+      
+        
+          
+      
+    
+        
+          
+      
+    
+        
+          
+      
+    
   
+    
+      
+        
+          
+      
+    
+  
+    
+      
+        
+          
+            
+            <div class="panel-body">
+              <h4>Related Posts</h4>
+              <ul>
+            
+                <li class="relatedPost">
+                  <a href="http://localhost:4000/python/2022/02/16/Reading-files-in-Python.html">Reading files in Python</a>
+                  
+                    (Categories: <a href="/category/python">python</a>)
+                  
+                </li>
+          
+          
+        
+      
+    
+  
+  
+  </ul>
+</div>
+
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/python/2022/02/16/Reading-files-in-Python.html">&laquo; Reading files in Python</a>
+  
+  
+    <a class="next" href="/ruby/jekyll/toubleshooting/2022/02/19/Commonmarker-gem-cannot-be-installed.html">Commonmarker gem cannot be installed &raquo;</a>
+  
+</div>
+
+<div class="disqus-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* <![CDATA[ */
+    var disqus_shortname = "s-annie-blog";
+    var disqus_identifier = "http://localhost:4000_Writing files in Python";
+    var disqus_title = "Writing files in Python";
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    /* ]]> */
+  </script>
 </div>
 
         <footer>

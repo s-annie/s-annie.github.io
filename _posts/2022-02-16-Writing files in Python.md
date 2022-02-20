@@ -1,5 +1,6 @@
 ---
 layout: post
+title: Writing files in Python
 categories: [python]
 ---
 ### Writing to a file
@@ -18,7 +19,7 @@ l = ['One', 'Two', 'Three']
 with open(path_w, mode='w') as :
     f.write('\n'.join(l))
 ```
-### Writing to a new and only new file.
+### Writing to a new and only a new file.
 Because using 'w' writes to any file specified in the path, overwritting mistakes are easily made. 
 Using mode 'x' can avoid it happens. Only when a file does not exist, a new one will be created and written.
 ```python
