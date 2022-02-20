@@ -19,7 +19,7 @@ The sed utility reads the specifiled files, or the standard input if no files ar
 ```bash
 cat hoge.txt | sed -e 's/xxx/XXX/g'
 sed -e 's/xxx/XXX/g' ./hoge.txt > ./hoge_new.txt
-sed -i -e 's/xxx/XXX/g' ./hoge.txt /hoge2.txt    # multiple files can be seletec
+sed -i -e 's/xxx/XXX/g' ./hoge.txt /hoge2.txt    # multiple files can be selected
 ```
 
 #### Functions and address
