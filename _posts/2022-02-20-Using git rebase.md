@@ -23,5 +23,7 @@ Instead commit message, the verb beform commit ID represents diffrent meanings.
 I want to combine commit 2 to commit 1, so I changed `pick h94daf5 commit 2` to `squash h94daf5 commit 2`, or simply `s` is OK.
 ```bash
 pick y761t57 commit 1
-pick h94daf5 commit 2
+s h94daf5 commit 2
 ```
+Then using `git push -u origin **` to push the rebased commits.  
+※ Adding `-f` option with push if necessary. Use it careful.
