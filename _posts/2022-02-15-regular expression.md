@@ -7,7 +7,7 @@ I really can`t remember regular expression...
 
 ### POSIX basic
 |Metacharacter|Description|
-|:--:|:--|
+|:---:|:--:|
 |`^`|Matches the starting position within the string.|
 |`.`|Matches any single character.|
 |`[ ]`|Matched a single character that is contained within the brackets.|
@@ -30,7 +30,7 @@ I really can`t remember regular expression...
 
 ### POSIX extended
 |Metacharacter|Description|
-|:--:|:--|
+|:---:|:--:|
 |`?`|Matches the preceding element zero or one time.|
 |`+`|Matches the preceding element one or more times.|
 |`|`|The choice operator matches either the expression before or the expression after the operator.|
