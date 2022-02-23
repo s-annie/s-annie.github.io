@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/static/img/rose.ico" />
-    <title>Projects - Annie's repository</title>
+    <title>About Singleton and Borg pattern - Annie's repository</title>
     <meta name="author" content="s-annie" />
-    <meta name="description" content="Projects" />
-    <meta name="keywords" content="Projects, Annie's repository, " />
+    <meta name="description" content="About Singleton and Borg pattern" />
+    <meta name="keywords" content="About Singleton and Borg pattern, Annie's repository, design pattern, python" />
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
     <meta content="" property="fb:app_id">
     <meta content="Annie's repository" property="og:site_name">
@@ -16,7 +16,7 @@
     
 
     
-      <meta content="Projects" property="og:title">
+      <meta content="About Singleton and Borg pattern" property="og:title">
       <meta content="article" property="og:type">
     
 
@@ -25,15 +25,24 @@
     
 
     
-      <meta content="http://localhost:4000/projects/" property="og:url">
+      <meta content="http://localhost:4000/design%20pattern/python/2022/02/21/Borg-pattern.html" property="og:url">
+    
+
+    
+      <meta content="2022-02-21T00:00:00+09:00" property="article:published_time">
+      <meta content="http://localhost:4000/about/" property="article:author">
     
 
     
 
     
-
+      
+        <meta content="design pattern" property="article:section">
+      
     
 
+    
+      
     
 
     <meta name="twitter:card" content="summary">
@@ -41,11 +50,11 @@
     <meta name="twitter:creator" content="@">
 
     
-      <meta name="twitter:title" content="Projects">
+      <meta name="twitter:title" content="About Singleton and Borg pattern">
     
 
     
-      <meta name="twitter:url" content="http://localhost:4000/projects/">
+      <meta name="twitter:url" content="http://localhost:4000/design%20pattern/python/2022/02/21/Borg-pattern.html">
     
 
     
@@ -101,266 +110,265 @@
         <!-- end /.fixed-condition -->
       </div>
       <div class="col-sm-8 col-offset-1 main-layout">
-        <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">Projects</h1>
-    <hr />
-  </header>
+        <header class="post-header">
+  <h1 class="post-title">About Singleton and Borg pattern</h1>
+</header>
 
-  <div class="post-content">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+<span class="time">21 Feb 2022</span>
+
+  <span class="categories">
+    &raquo; <a href="/category/design pattern">design pattern</a>, <a href="/category/python">python</a>
+  </span>
 
 
+<div class="content">
+  <div class="post"><p>Singleton design pattern is used to create only one instance of data throughout the lifetime of a program. There is classic singleton and the borg singleton. In a classic Singleton pattern there is only one instance of a class, but in the Borg pattern, the focus is on sharing state instead of sharing instance identity.</p>
+
+<h3 id="a-classic-singleton">A classic singleton</h3>
+<h4 id="implementation-sample">Implementation sample</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">SingletonClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="s">'instance'</span><span class="p">):</span>
+            <span class="n">cls</span><span class="p">.</span><span class="n">instance</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">SingletonClass</span><span class="p">,</span> <span class="n">cls</span><span class="p">).</span><span class="n">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cls</span><span class="p">.</span><span class="n">instance</span>
+</code></pre></div></div>
+
+<h3 id="the-borg-singleton">The borg singleton</h3>
+<p>In the borg pattern, all of the instances are diffrent, but they share the same state. In the sample code below, the shared satte is maintained in the <code class="language-plaintext highlighter-rouge">__shared_state__</code> attribute, and all new instances of the Borg class will have this state as defined in the <strong>new</strong> class method.</p>
+<h4 id="implementation-sample-1">Implementation sample</h4>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Borg</span><span class="p">(</span><span class="n">Object</span><span class="p">):</span>
+    <span class="n">_shared_stats</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">Borg</span><span class="p">,</span> <span class="n">cls</span><span class="p">).</span><span class="n">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">obj</span><span class="p">.</span><span class="n">__dict__</span> <span class="o">=</span> <span class="n">cls</span><span class="p">.</span><span class="n">_shared_stats</span>
+        <span class="k">return</span> <span class="n">obj</span>
+
+<span class="k">class</span> <span class="nc">Child</span><span class="p">(</span><span class="n">Borg</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">AnotherChild</span><span class="p">(</span><span class="n">Borg</span><span class="p">):</span>
+    <span class="c1"># Inheriting Borg class but with different state
+</span>    <span class="n">_shared_stats</span> <span class="o">=</span> <span class="p">[]</span>
+</code></pre></div></div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>borg <span class="o">=</span> Borg<span class="o">()</span>
+child <span class="o">=</span> Child<span class="o">()</span>
+borg.var  <span class="o">=</span> <span class="s1">'I`m the only one var'</span>
+print<span class="o">(</span>child.var<span class="o">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">'I`m the only one var'</span>
+another_child <span class="o">=</span> AnotherChild<span class="o">()</span>
+print<span class="o">(</span>another_child.var<span class="o">)</span>
+<span class="o">&gt;&gt;&gt;</span> AttributeError: AnotherChild instance has no attribute <span class="s1">'shared_state'</span>
+</code></pre></div></div>
+
+<h3 id="refenrences">Refenrences</h3>
+<ul>
+  <li>https://github.com/faif/python-patterns/blob/master/patterns/creational/borg.py</li>
+  <li>Learning Python Design Patterns 2013 Gennadiy Zlobin Chapter 2</li>
+</ul>
+</div>
+  <div class="share-page">
+  <span style="float: left;">Share this on &rarr;&nbsp;&nbsp;</span>
+
+  <!-- Twitter -->
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="">Tweet</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+  <!-- Facebook -->
+  <div class="fb-share-button" data-href="http://localhost:4000/design%20pattern/python/2022/02/21/Borg-pattern.html" data-layout="button_count" style="position: relative; top: -8px; left: 3px;"></div>
+</div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+</div>
+
+
+  
     
-    
-
-    <div class="projects">
       
-	<div id="tag-filter" class="tag-group">
-		<span class="tag-filter tag-cloud all active">All</span>
-		
-    
-    
-
-    
-    
-
-    
-    
-      <span class="tag-filter tag-cloud" data-tag="api">API</span>
-    
-      <span class="tag-filter tag-cloud" data-tag="angular js">Angular JS</span>
-    
-      <span class="tag-filter tag-cloud" data-tag="django">Django</span>
-    
-      <span class="tag-filter tag-cloud" data-tag="html">HTML</span>
-    
-      <span class="tag-filter tag-cloud" data-tag="jquery">JQuery</span>
-    
-      <span class="tag-filter tag-cloud" data-tag="python">Python</span>
-    
-      <span class="tag-filter tag-cloud" data-tag="nodejs">nodejs</span>
-    
-	</div>
-
-
+        
+          
       
+          
       
-      <div class="project-item project-outer" data-tags='["angular js","api"]'>
-        <div class="project-inner">
-          <a href="/static/projects/placeholder.jpg" class="thickbox">
-            <div class="project-img bordered" style="background-image: url('/static/projects/placeholder.jpg');"></div>
-          </a>
-          
-          
-
-          
-          
-            <a class="project-detail" href="/project/cool-project/">
-          
-            <h3 class="project-headlines">Cool project 1</h3>
-          
-            </a>
-          
-
-          <div class="project-content">
-            <div class="tag-holder">
-              
-                
-                  <span class="tags tag-filter" data-tag="angular js"><a href="#Angular JS">Angular JS</a></span>
-                
-                  <span class="tags tag-filter" data-tag="api"><a href="#API">API</a></span>
-                
-              
-            </div>
-          </div>
-          <div class="project-footer">
-            
-              <a href="https://www.google.com" class="project-link" target="_blank"><i class="fa fa-globe"></i> View</a>
-            
-            <span class="project-timeline">Jan 2014</span>
-          </div>
-        </div>
-        <hr>
-      </div>
+    
+  
+    
       
-      <div class="project-item project-outer" data-tags='["python","django"]'>
-        <div class="project-inner">
-          <a href="/static/projects/placeholder.jpg" class="thickbox">
-            <div class="project-img bordered" style="background-image: url('/static/projects/placeholder.jpg');"></div>
-          </a>
+        
           
-          
-
-          
-          
-            <a class="project-detail" href="#">
-          
-            <h3 class="project-headlines">Cool project 2</h3>
-          
-            </a>
-          
-
-          <div class="project-content">
-            <div class="tag-holder">
-              
-                
-                  <span class="tags tag-filter" data-tag="python"><a href="#Python">Python</a></span>
-                
-                  <span class="tags tag-filter" data-tag="django"><a href="#Django">Django</a></span>
-                
-              
-            </div>
-          </div>
-          <div class="project-footer">
-            
-              <a href="#" class="project-link" target="_blank"><i class="fa fa-globe"></i> View</a>
-            
-            <span class="project-timeline">May 2014</span>
-          </div>
-        </div>
-        <hr>
-      </div>
       
-      <div class="project-item project-outer" data-tags='["html","jquery","django"]'>
-        <div class="project-inner">
-          <a href="/static/projects/placeholder.jpg" class="thickbox">
-            <div class="project-img bordered" style="background-image: url('/static/projects/placeholder.jpg');"></div>
-          </a>
           
-          
-
-          
-          
-            <a class="project-detail" href="#">
-          
-            <h3 class="project-headlines">Cool project 3</h3>
-          
-            </a>
-          
-
-          <div class="project-content">
-            <div class="tag-holder">
-              
-                
-                  <span class="tags tag-filter" data-tag="html"><a href="#HTML">HTML</a></span>
-                
-                  <span class="tags tag-filter" data-tag="jquery"><a href="#JQuery">JQuery</a></span>
-                
-                  <span class="tags tag-filter" data-tag="django"><a href="#Django">Django</a></span>
-                
-              
-            </div>
-          </div>
-          <div class="project-footer">
-            
-              <a href="#" class="project-link" target="_blank"><i class="fa fa-globe"></i> View</a>
-            
-            <span class="project-timeline">June 2014</span>
-          </div>
-        </div>
-        <hr>
-      </div>
       
-      <div class="project-item project-outer" data-tags='["python","nodejs"]'>
-        <div class="project-inner">
-          <a href="/static/projects/placeholder.jpg" class="thickbox">
-            <div class="project-img bordered" style="background-image: url('/static/projects/placeholder.jpg');"></div>
-          </a>
+    
+        
           
-          
-
-          
-          
-            <h3 class="project-headlines">Cool project 4</h3>
-          
-
-          <div class="project-content">
-            <div class="tag-holder">
-              
-                
-                  <span class="tags tag-filter" data-tag="python"><a href="#Python">Python</a></span>
-                
-                  <span class="tags tag-filter" data-tag="nodejs"><a href="#nodejs">nodejs</a></span>
-                
-              
-            </div>
-          </div>
-          <div class="project-footer">
-            
-            <span class="project-timeline">Oct 2016</span>
-          </div>
-        </div>
-        <hr>
-      </div>
       
-      <div class="project-item project-outer" data-tags='["python","nodejs"]'>
-        <div class="project-inner">
-          <a href="/static/projects/placeholder.jpg" class="thickbox">
-            <div class="project-img bordered" style="background-image: url('/static/projects/placeholder.jpg');"></div>
-          </a>
           
-          
-
-          
-          
-            <h3 class="project-headlines">Cool project 5</h3>
-          
-
-          <div class="project-content">
-            <div class="tag-holder">
-              
-                
-                  <span class="tags tag-filter" data-tag="python"><a href="#Python">Python</a></span>
-                
-                  <span class="tags tag-filter" data-tag="nodejs"><a href="#nodejs">nodejs</a></span>
-                
-              
-            </div>
-          </div>
-          <div class="project-footer">
-            
-            <span class="project-timeline">Oct 2016</span>
-          </div>
-        </div>
-        <hr>
-      </div>
       
-      <div class="project-item project-outer" data-tags='["python","nodejs"]'>
-        <div class="project-inner">
-          <a href="/static/projects/placeholder.jpg" class="thickbox">
-            <div class="project-img bordered" style="background-image: url('/static/projects/placeholder.jpg');"></div>
-          </a>
-          
-          
-
-          
-          
-            <h3 class="project-headlines">Cool project 6</h3>
-          
-
-          <div class="project-content">
-            <div class="tag-holder">
-              
-                
-                  <span class="tags tag-filter" data-tag="python"><a href="#Python">Python</a></span>
-                
-                  <span class="tags tag-filter" data-tag="nodejs"><a href="#nodejs">nodejs</a></span>
-                
-              
-            </div>
-          </div>
-          <div class="project-footer">
-            
-            <span class="project-timeline">Oct 2016</span>
-          </div>
-        </div>
-        <hr>
-      </div>
+    
+  
+    
       
-    </div>
-  </div>
-</article>
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+            
+            <div class="panel-body">
+              <h4>Related Posts</h4>
+              <ul>
+            
+                <li class="relatedPost">
+                  <a href="http://localhost:4000/python/2022/02/16/Writing-files-in-Python.html">Writing files in Python</a>
+                  
+                    (Categories: <a href="/category/python">python</a>)
+                  
+                </li>
+          
+          
+        
+      
+    
+  
+    
+      
+        
+          
+      
+          
+            
+                <li class="relatedPost">
+                  <a href="http://localhost:4000/python/2022/02/16/Reading-files-in-Python.html">Reading files in Python</a>
+                  
+                    (Categories: <a href="/category/python">python</a>)
+                  
+                </li>
+          
+          
+        
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+  
+    
+      
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+  
+  
+  </ul>
+</div>
+
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/git/2022/02/20/Using-git-rebase.html">&laquo; Using git rebase to integrate commits</a>
+  
+  
+    <a class="next" href="/web/2022/02/21/Difference-between-DNS-and-DHCP.html">Difference between DNS and DHCP &raquo;</a>
+  
+</div>
+
+<div class="disqus-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* <![CDATA[ */
+    var disqus_shortname = "s-annie-blog";
+    var disqus_identifier = "http://localhost:4000_About Singleton and Borg pattern";
+    var disqus_title = "About Singleton and Borg pattern";
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    /* ]]> */
+  </script>
+</div>
 
         <footer>
           &copy; s-annie

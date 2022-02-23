@@ -5,9 +5,115 @@
     <description>My Personal Page</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 19 Feb 2022 18:17:06 +0900</pubDate>
-    <lastBuildDate>Sat, 19 Feb 2022 18:17:06 +0900</lastBuildDate>
+    <pubDate>Wed, 23 Feb 2022 21:38:10 +0900</pubDate>
+    <lastBuildDate>Wed, 23 Feb 2022 21:38:10 +0900</lastBuildDate>
     <generator>Jekyll v3.9.0</generator>
+    
+      <item>
+        <title>Difference between DNS and DHCP</title>
+        <description>&lt;p&gt;With the help of Domain Name System (DNS) server, domain names and IP addresses and translated to each other. Dynamic Host Configuration Protocol (DHCP) is a protocol for automatically assigning IP addresses and other configurations to devices.
+&lt;img src=&quot;/static/img/dns_and_dhcp.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Picture credits to https://techhub.hpe.com/eginfolib/networking/docs/switches/5700/5998-5588r_l3-ip-svcs_cg/content/446919437.htm&lt;/p&gt;
+</description>
+        <pubDate>Mon, 21 Feb 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/web/2022/02/21/Difference-between-DNS-and-DHCP.html</link>
+        <guid isPermaLink="true">http://localhost:4000/web/2022/02/21/Difference-between-DNS-and-DHCP.html</guid>
+        
+        
+        <category>web</category>
+        
+      </item>
+    
+      <item>
+        <title>About Singleton and Borg pattern</title>
+        <description>&lt;p&gt;Singleton design pattern is used to create only one instance of data throughout the lifetime of a program. There is classic singleton and the borg singleton. In a classic Singleton pattern there is only one instance of a class, but in the Borg pattern, the focus is on sharing state instead of sharing instance identity.&lt;/p&gt;
+
+&lt;h3 id=&quot;a-classic-singleton&quot;&gt;A classic singleton&lt;/h3&gt;
+&lt;h4 id=&quot;implementation-sample&quot;&gt;Implementation sample&lt;/h4&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SingletonClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__new__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;hasattr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'instance'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SingletonClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__new__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;instance&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;the-borg-singleton&quot;&gt;The borg singleton&lt;/h3&gt;
+&lt;p&gt;In the borg pattern, all of the instances are diffrent, but they share the same state. In the sample code below, the shared satte is maintained in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;__shared_state__&lt;/code&gt; attribute, and all new instances of the Borg class will have this state as defined in the &lt;strong&gt;new&lt;/strong&gt; class method.&lt;/p&gt;
+&lt;h4 id=&quot;implementation-sample-1&quot;&gt;Implementation sample&lt;/h4&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Borg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;_shared_stats&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__new__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Borg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__new__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kwargs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;__dict__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cls&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_shared_stats&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;obj&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Child&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Borg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AnotherChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Borg&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# Inheriting Borg class but with different state
+&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;_shared_stats&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;borg &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Borg&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+child &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; Child&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+borg.var  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'I`m the only one var'&lt;/span&gt;
+print&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;child.var&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'I`m the only one var'&lt;/span&gt;
+another_child &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; AnotherChild&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+print&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;another_child.var&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; AttributeError: AnotherChild instance has no attribute &lt;span class=&quot;s1&quot;&gt;'shared_state'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;refenrences&quot;&gt;Refenrences&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;https://github.com/faif/python-patterns/blob/master/patterns/creational/borg.py&lt;/li&gt;
+  &lt;li&gt;Learning Python Design Patterns 2013 Gennadiy Zlobin Chapter 2&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Mon, 21 Feb 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/design%20pattern/python/2022/02/21/Borg-pattern.html</link>
+        <guid isPermaLink="true">http://localhost:4000/design%20pattern/python/2022/02/21/Borg-pattern.html</guid>
+        
+        
+        <category>design pattern</category>
+        
+        <category>python</category>
+        
+      </item>
+    
+      <item>
+        <title>Using git rebase to integrate commits</title>
+        <description>&lt;p&gt;Last week I wanted to integrate some commits in my repository. I found &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git rebase&lt;/code&gt; to do this. It is called ‘squash the commits into one single commit’ in the official documentation.&lt;br /&gt;
+First, choose the commits that you would like to integrate.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git rebase &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; HEAD~2   &lt;span class=&quot;c&quot;&gt;# combine 2 commits from the HEAD&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Then terminal shows like this. A little similar to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;commit&lt;/code&gt;, but in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rebase&lt;/code&gt; the verb before commit ID represents diffrent meanings.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    pick y761t57 commit1
+    pick h94daf5 commit2
+    &lt;span class=&quot;c&quot;&gt;# Commands:&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# p, pick &amp;lt;commit&amp;gt; = use commit&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# r, reword &amp;lt;commit&amp;gt; = use commit, but edit the commit message&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# e, edit &amp;lt;commit&amp;gt; = use commit, but stop for amending&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# s, squash &amp;lt;commit&amp;gt; = use commit, but meld into previous commit&lt;/span&gt;
+    ...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;I would like to squash commit2 to commit1, so I changed line &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pick h94daf5 commit 2&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;squash h94daf5 commit 2&lt;/code&gt;, or simply &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;s&lt;/code&gt; is OK.&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pick y761t57 commit 1
+s h94daf5 commit 2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;If there is no problem, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Successfully rebased&lt;/code&gt; will show up, otherwise it will tell you where goes wrong.   Follow the instruction to solve the error. Then using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;git push -u origin **&lt;/code&gt; to push the rebased commits.&lt;br /&gt;
+※ Adding &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-f&lt;/code&gt; option with push if necessary. Use it careful.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 20 Feb 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/git/2022/02/20/Using-git-rebase.html</link>
+        <guid isPermaLink="true">http://localhost:4000/git/2022/02/20/Using-git-rebase.html</guid>
+        
+        
+        <category>git</category>
+        
+      </item>
     
       <item>
         <title>Commonmarker gem cannot be installed</title>
@@ -176,6 +282,143 @@ Commonly used ones are the following:&lt;/p&gt;
         
         
         <category>python</category>
+        
+      </item>
+    
+      <item>
+        <title>Sed command in linux</title>
+        <description>&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sed&lt;/code&gt; is a stream editor, it filters and transforms text.&lt;br /&gt;
+The sed utility reads the specifiled files, or the standard input if no files are specified, modifying the input as specified by a list of commands. The input is then written to the standard output.&lt;/p&gt;
+
+&lt;h3 id=&quot;mostly-used-options&quot;&gt;Mostly used options&lt;/h3&gt;
+
+&lt;p&gt;-e [command] 
+    Append the editing commands specified by the command argument to the list of commands.
+    The form of a sed command is as follows:
+        [address[,address]]function[arguments]&lt;/p&gt;
+
+&lt;p&gt;-i [extension]
+    Edit files in-place, saving backups with the specified extension.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;hoge.txt | &lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s/xxx/XXX/g'&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s/xxx/XXX/g'&lt;/span&gt; ./hoge.txt &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; ./hoge_new.txt
+&lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s/xxx/XXX/g'&lt;/span&gt; ./hoge.txt /hoge2.txt    &lt;span class=&quot;c&quot;&gt;# multiple files can be selected&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;functions-and-address&quot;&gt;Functions and address&lt;/h4&gt;
+
+&lt;p&gt;s/regular expression/replacement flags
+    Substitute the replacement string for the first instance of the regular expression in the pattern space.&lt;br /&gt;
+    The value of flags in the substitute function is zero or more of the following.&lt;br /&gt;
+        g: Make the substitution for all non-overlapping matches of the regular expression, not just the first one.&lt;/p&gt;
+
+&lt;p&gt;d: Delete the pattern space and start the next cycle.&lt;br /&gt;
+p: Write the pattern space to standard output.&lt;/p&gt;
+
+&lt;p&gt;An address is not required, but if specified must be a number, a dollar character that addressed the last line of input, or a context address(which consists of a regular expression preceded and followed by a delimeter).&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; 1p         &lt;span class=&quot;c&quot;&gt;# Ouput the first line. &lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\$&lt;/span&gt;p        &lt;span class=&quot;c&quot;&gt;# Ouput the last line. &lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; 6,15p      &lt;span class=&quot;c&quot;&gt;# Ouput line6~15. &lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; 1~5p       &lt;span class=&quot;c&quot;&gt;# Output line1, 6, 11...&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'\%xxx%p'&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# Output the lines that matches the regular expression.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+</description>
+        <pubDate>Tue, 15 Feb 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/linux/bash/2022/02/15/sed-command.html</link>
+        <guid isPermaLink="true">http://localhost:4000/linux/bash/2022/02/15/sed-command.html</guid>
+        
+        
+        <category>linux</category>
+        
+        <category>bash</category>
+        
+      </item>
+    
+      <item>
+        <title>Regular expression</title>
+        <description>&lt;p&gt;I really can`t remember regular expression…&lt;/p&gt;
+
+&lt;h3 id=&quot;posix-basic&quot;&gt;POSIX basic&lt;/h3&gt;
+&lt;p&gt;|Metacharacter|Description|
+|:—:|:–:|
+|&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;^&lt;/code&gt;|Matches the starting position within the string.|
+|&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.&lt;/code&gt;|Matches any single character.|
+|&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[ ]&lt;/code&gt;|Matched a single character that is contained within the brackets.|
+|&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[^ ]&lt;/code&gt;|Matched a single character that is NOT contained within the brackets.|
+|&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt;|Matches the ending position of the string or the position just before a string-ending newline.|
+|&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;( )&lt;/code&gt;|Defines a marked subexpression.|
+|&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;\n&lt;/code&gt;|Matches what the nth marked subexpression matched, where n is a digit form 1 to 9.|
+|&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*&lt;/code&gt;|Matches the preceding element zero or more times.|
+|&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{m,n}&lt;/code&gt;|Matches the preceding element at least m and not more than n times.|&lt;/p&gt;
+
+&lt;h4 id=&quot;examples&quot;&gt;Examples&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a.c&lt;/code&gt; matches abc, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[a.c]&lt;/code&gt; matches only “a”, “.” or “c”.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[a-z]&lt;/code&gt; specifies a range which matches any lowercase letter from “a” to “z”.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(ab)*&lt;/code&gt; matches “”, “ab”, “abab” and so on.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a{3, 5}&lt;/code&gt; matches “aaa”, “aaaa” and “aaaaa”.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[hc]at&lt;/code&gt; matches hat and cat.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[^hc]at&lt;/code&gt; matches all string matched by &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.at&lt;/code&gt; other than “hat” and “cat”.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;^[hc]at&lt;/code&gt; matches “hat” and “cat”, but only at the beginning of the string or line.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[hc]at$&lt;/code&gt; matches “hat” and “cat”, but only at the end of the string or line.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;posix-extended&quot;&gt;POSIX extended&lt;/h3&gt;
+&lt;p&gt;|Metacharacter|Description|
+|:—:|:–:|
+|&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;?&lt;/code&gt;|Matches the preceding element zero or one time.|
+|&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;+&lt;/code&gt;|Matches the preceding element one or more times.|
+|&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;|&lt;/code&gt;|The choice operator matches either the expression before or the expression after the operator.|&lt;/p&gt;
+
+&lt;h4 id=&quot;examples-1&quot;&gt;Examples&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[hc]?at&lt;/code&gt; matches “at”, “hat” and “cat”.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[hc]*at&lt;/code&gt; matches “at”, “hat”, “hhat” and so on.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[hc]+at&lt;/code&gt; matches “hat”, “cat”, “hhat”, “chat”.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cat|dog&lt;/code&gt; matches “dog”, “cat”.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;POSIX extended regular expression can often be used with modern Unix utilities by including the command line flag -E.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 15 Feb 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/linux/bash/2022/02/15/regular-expression.html</link>
+        <guid isPermaLink="true">http://localhost:4000/linux/bash/2022/02/15/regular-expression.html</guid>
+        
+        
+        <category>linux</category>
+        
+        <category>bash</category>
+        
+      </item>
+    
+      <item>
+        <title>Test</title>
+        <description>&lt;h1 id=&quot;test&quot;&gt;Test&lt;/h1&gt;
+&lt;h2 id=&quot;test-1&quot;&gt;Test&lt;/h2&gt;
+&lt;h3 id=&quot;test-2&quot;&gt;Test&lt;/h3&gt;
+&lt;h4 id=&quot;test-3&quot;&gt;Test&lt;/h4&gt;
+&lt;h5 id=&quot;test-4&quot;&gt;Test&lt;/h5&gt;
+
+&lt;p&gt;test test&lt;/p&gt;
+</description>
+        <pubDate>Thu, 10 Feb 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/2022/02/10/test.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2022/02/10/test.html</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>JQ command in Linux with Examples</title>
+        <description>
+</description>
+        <pubDate>Thu, 10 Feb 2022 00:00:00 +0900</pubDate>
+        <link>http://localhost:4000/linux/2022/02/10/jq-command-in-Linux.html</link>
+        <guid isPermaLink="true">http://localhost:4000/linux/2022/02/10/jq-command-in-Linux.html</guid>
+        
+        
+        <category>linux</category>
         
       </item>
     
