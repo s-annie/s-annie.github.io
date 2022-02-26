@@ -30,7 +30,7 @@ urls:
     - text: About Me
       url: /about/
     - text: Reviews
-      url: /projects/
+      url: /review/
     # - text: XML Feed
     #   url: /feed.xml
 
