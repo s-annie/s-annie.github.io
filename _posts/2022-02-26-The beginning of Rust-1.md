@@ -23,7 +23,7 @@ Cargo is Rust`s build system and package manager.
 ```bash
 cargo new hello_cargo
 ```
-Open Cargo.toml file. `.toml` is Cargo's congiguration format. (TOML, Tom's obvious, Minimal launguage.)
+Open Cargo.toml file. `.toml` is Cargo's configuration format. (TOML, Tom's obvious, Minimal launguage.)
 ```toml
 [package]
 name = "hello_cargo"
