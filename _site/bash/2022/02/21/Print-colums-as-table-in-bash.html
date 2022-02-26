@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/static/img/rose.ico" />
-    <title>Curl command in Linux with Examples - Annie's repository</title>
+    <title>Print columns as a table in bash - Annie's repository</title>
     <meta name="author" content="s-annie" />
-    <meta name="description" content="Curl command in Linux with Examples" />
-    <meta name="keywords" content="Curl command in Linux with Examples, Annie's repository, linux" />
+    <meta name="description" content="Print columns as a table in bash" />
+    <meta name="keywords" content="Print columns as a table in bash, Annie's repository, bash" />
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
     <meta content="" property="fb:app_id">
     <meta content="Annie's repository" property="og:site_name">
@@ -16,7 +16,7 @@
     
 
     
-      <meta content="Curl command in Linux with Examples" property="og:title">
+      <meta content="Print columns as a table in bash" property="og:title">
       <meta content="article" property="og:type">
     
 
@@ -25,11 +25,11 @@
     
 
     
-      <meta content="http://localhost:4000/linux/2022/02/10/Using-curl-command.html" property="og:url">
+      <meta content="http://localhost:4000/bash/2022/02/21/Print-colums-as-table-in-bash.html" property="og:url">
     
 
     
-      <meta content="2022-02-10T00:00:00+09:00" property="article:published_time">
+      <meta content="2022-02-21T00:00:00+09:00" property="article:published_time">
       <meta content="http://localhost:4000/about/" property="article:author">
     
 
@@ -37,7 +37,7 @@
 
     
       
-        <meta content="linux" property="article:section">
+        <meta content="bash" property="article:section">
       
     
 
@@ -50,11 +50,11 @@
     <meta name="twitter:creator" content="@">
 
     
-      <meta name="twitter:title" content="Curl command in Linux with Examples">
+      <meta name="twitter:title" content="Print columns as a table in bash">
     
 
     
-      <meta name="twitter:url" content="http://localhost:4000/linux/2022/02/10/Using-curl-command.html">
+      <meta name="twitter:url" content="http://localhost:4000/bash/2022/02/21/Print-colums-as-table-in-bash.html">
     
 
     
@@ -115,18 +115,28 @@
       </div>
       <div class="col-sm-8 col-offset-1 main-layout">
         <header class="post-header">
-  <h1 class="post-title">Curl command in Linux with Examples</h1>
+  <h1 class="post-title">Print columns as a table in bash</h1>
 </header>
 
-<span class="time">10 Feb 2022</span>
+<span class="time">21 Feb 2022</span>
 
   <span class="categories">
-    &raquo; <a href="/category/linux">linux</a>
+    &raquo; <a href="/category/bash">bash</a>
   </span>
 
 
 <div class="content">
-  <div class="post"><p>curl is a tool for transferring data from or to a server.</p>
+  <div class="post"><p><code class="language-plaintext highlighter-rouge">column</code> is used to do this.<br />
+Here is a example txt file.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># test.txt</span>
+name size
+f1    1kb
+ff1   20kb
+fff2  5kb
+</code></pre></div></div>
+<p>And it can be output as table on terminal like this.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat </span>test.txt | <span class="nb">sed</span> <span class="s1">'s/\t/,|,/g'</span> | column <span class="nt">-s</span> <span class="s1">','</span> <span class="nt">-t</span><span class="nb">.</span> 
+</code></pre></div></div>
 </div>
   <div class="share-page">
   <span style="float: left;">Share this on &rarr;&nbsp;&nbsp;</span>
@@ -136,7 +146,7 @@
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
   <!-- Facebook -->
-  <div class="fb-share-button" data-href="http://localhost:4000/linux/2022/02/10/Using-curl-command.html" data-layout="button_count" style="position: relative; top: -8px; left: 3px;"></div>
+  <div class="fb-share-button" data-href="http://localhost:4000/bash/2022/02/21/Print-colums-as-table-in-bash.html" data-layout="button_count" style="position: relative; top: -8px; left: 3px;"></div>
 </div>
 
 <div id="fb-root"></div>
@@ -245,6 +255,10 @@
       
         
           
+      
+    
+        
+          
             
             <div class="panel-body">
               <h4>Related Posts</h4>
@@ -261,13 +275,13 @@
         
       
     
+  
+    
+      
         
           
       
     
-  
-    
-      
         
           
             
@@ -282,25 +296,11 @@
         
       
     
-        
-          
-      
-    
   
     
       
         
           
-            
-                <li class="relatedPost">
-                  <a href="http://localhost:4000/linux/2022/02/10/jq-command-in-Linux.html">JQ command in Linux with Examples</a>
-                  
-                    (Categories: <a href="/category/linux">linux</a>)
-                  
-                </li>
-          
-          
-        
       
     
   
@@ -318,8 +318,10 @@
 
 <div class="PageNavigation">
   
+    <a class="prev" href="/web/2022/02/21/Difference-between-DNS-and-DHCP.html">&laquo; Difference between DNS and DHCP</a>
   
-    <a class="next" href="/linux/2022/02/10/jq-command-in-Linux.html">JQ command in Linux with Examples &raquo;</a>
+  
+    <a class="next" href="/c++/2022/02/23/Templates-in-c++.html">Templates in C++ &raquo;</a>
   
 </div>
 
@@ -328,8 +330,8 @@
   <script type="text/javascript">
     /* <![CDATA[ */
     var disqus_shortname = "s-annie-blog";
-    var disqus_identifier = "http://localhost:4000_Curl command in Linux with Examples";
-    var disqus_title = "Curl command in Linux with Examples";
+    var disqus_identifier = "http://localhost:4000_Print columns as a table in bash";
+    var disqus_title = "Print columns as a table in bash";
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {

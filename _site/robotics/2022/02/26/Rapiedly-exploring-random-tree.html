@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/static/img/rose.ico" />
-    <title>Curl command in Linux with Examples - Annie's repository</title>
+    <title>Rapidly-exploring random tree - Annie's repository</title>
     <meta name="author" content="s-annie" />
-    <meta name="description" content="Curl command in Linux with Examples" />
-    <meta name="keywords" content="Curl command in Linux with Examples, Annie's repository, linux" />
+    <meta name="description" content="Rapidly-exploring random tree" />
+    <meta name="keywords" content="Rapidly-exploring random tree, Annie's repository, Robotics" />
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
     <meta content="" property="fb:app_id">
     <meta content="Annie's repository" property="og:site_name">
@@ -16,7 +16,7 @@
     
 
     
-      <meta content="Curl command in Linux with Examples" property="og:title">
+      <meta content="Rapidly-exploring random tree" property="og:title">
       <meta content="article" property="og:type">
     
 
@@ -25,11 +25,11 @@
     
 
     
-      <meta content="http://localhost:4000/linux/2022/02/10/Using-curl-command.html" property="og:url">
+      <meta content="http://localhost:4000/robotics/2022/02/26/Rapiedly-exploring-random-tree.html" property="og:url">
     
 
     
-      <meta content="2022-02-10T00:00:00+09:00" property="article:published_time">
+      <meta content="2022-02-26T00:00:00+09:00" property="article:published_time">
       <meta content="http://localhost:4000/about/" property="article:author">
     
 
@@ -37,7 +37,7 @@
 
     
       
-        <meta content="linux" property="article:section">
+        <meta content="Robotics" property="article:section">
       
     
 
@@ -50,11 +50,11 @@
     <meta name="twitter:creator" content="@">
 
     
-      <meta name="twitter:title" content="Curl command in Linux with Examples">
+      <meta name="twitter:title" content="Rapidly-exploring random tree">
     
 
     
-      <meta name="twitter:url" content="http://localhost:4000/linux/2022/02/10/Using-curl-command.html">
+      <meta name="twitter:url" content="http://localhost:4000/robotics/2022/02/26/Rapiedly-exploring-random-tree.html">
     
 
     
@@ -115,18 +115,63 @@
       </div>
       <div class="col-sm-8 col-offset-1 main-layout">
         <header class="post-header">
-  <h1 class="post-title">Curl command in Linux with Examples</h1>
+  <h1 class="post-title">Rapidly-exploring random tree</h1>
 </header>
 
-<span class="time">10 Feb 2022</span>
+<span class="time">26 Feb 2022</span>
 
   <span class="categories">
-    &raquo; <a href="/category/linux">linux</a>
+    &raquo; <a href="/category/Robotics">Robotics</a>
   </span>
 
 
 <div class="content">
-  <div class="post"><p>curl is a tool for transferring data from or to a server.</p>
+  <div class="post"><p>The Rapiely-exploring random tree is an algorithm to finle path. RRT* is an optimized modified algorithm that aims to achieve a shortest path.</p>
+
+<p>RRT Pseudo Code</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Qgoal       // region that identifies success
+Counter = 0 // keeps track of iterations
+lin = n     // number of iterations algorithnm should run for
+G(V, E)     // Graph containing edges and vertices, initialized as empty
+While counter &lt; lim:
+    Xnew = RandomPosition()
+    If IsInObstacle(XNew) == True:
+        continue
+    XNearest = Nearst(G(V, E), XNew) // find nearest vertex
+    Link = Chain(Xnew, Xnearest)
+    G.append(link)
+    if Xnew in Qgoal:
+        Return G
+Return G
+</code></pre></div></div>
+
+<p>RRT* is an optomozed version of RRT. When the number of nodes approaches infinity, the RRT* algorithm will feliver the shortest possible path to the goal.
+It is based on RRT, but two key additions to the algorithm result in significantly different results.
+First , RRT* records the distance each vertex has traveled relative to its parent vertex. This is referred to as the cost() of the vertex. 
+After the closest node is found in the graph, a neighborhood of verticles in a fixed radius from a new node are examined. 
+If a node with a cheaper cost than the proximal node is found, the cheaper node replaces the proximal node.</p>
+
+<p>The second diffrent RRT* adds is the rewiring of the tree. After a vertex has been connected to the cheapest neighbor, the neighbors are checked if being rewired to the newly added vertex will
+make their cost decrease. If the cose does indeed decrease, the neighbor is rewired to the newly added vertex.</p>
+
+<p>RRT* Pseudo Code</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Rad = r
+G(V, E) // Graph containing edges and verticles
+For itr in ranges(0...n)
+    Xnew = RandomPosition()
+    If Obstacle(Xnew) == True try again
+    Xnearest = Nerearst(G(V, E), Xnew)
+    Cost(Xnew) = Distance(Xnew, Xnearest)
+    Xbest, Xneighbors = findNeighbors(G(V, E), Xnew, Rad)  // This is the difference 1
+    Link = Chain(XNew, Xbest)
+    For x in XNeighbors
+        If Cost(Xnews) + Distance(Xnew, x') &lt; Cost(x')      // This is the difference 2
+            Cost(X') = Cost(Xnew) + Distance(Xnew, x')
+            Parent(x') = Xnew
+            G += {Xnew, x'}
+    G += Link
+return G
+</code></pre></div></div>
 </div>
   <div class="share-page">
   <span style="float: left;">Share this on &rarr;&nbsp;&nbsp;</span>
@@ -136,7 +181,7 @@
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
   <!-- Facebook -->
-  <div class="fb-share-button" data-href="http://localhost:4000/linux/2022/02/10/Using-curl-command.html" data-layout="button_count" style="position: relative; top: -8px; left: 3px;"></div>
+  <div class="fb-share-button" data-href="http://localhost:4000/robotics/2022/02/26/Rapiedly-exploring-random-tree.html" data-layout="button_count" style="position: relative; top: -8px; left: 3px;"></div>
 </div>
 
 <div id="fb-root"></div>
@@ -245,20 +290,6 @@
       
         
           
-            
-            <div class="panel-body">
-              <h4>Related Posts</h4>
-              <ul>
-            
-                <li class="relatedPost">
-                  <a href="http://localhost:4000/linux/bash/2022/02/15/sed-command.html">Sed command in linux</a>
-                  
-                    (Categories: <a href="/category/linux">linux</a>, <a href="/category/bash">bash</a>)
-                  
-                </li>
-          
-          
-        
       
     
         
@@ -270,16 +301,6 @@
       
         
           
-            
-                <li class="relatedPost">
-                  <a href="http://localhost:4000/linux/bash/2022/02/15/regular-expression.html">Regular expression</a>
-                  
-                    (Categories: <a href="/category/linux">linux</a>, <a href="/category/bash">bash</a>)
-                  
-                </li>
-          
-          
-        
       
     
         
@@ -291,16 +312,6 @@
       
         
           
-            
-                <li class="relatedPost">
-                  <a href="http://localhost:4000/linux/2022/02/10/jq-command-in-Linux.html">JQ command in Linux with Examples</a>
-                  
-                    (Categories: <a href="/category/linux">linux</a>)
-                  
-                </li>
-          
-          
-        
       
     
   
@@ -312,14 +323,13 @@
     
   
   
-  </ul>
-</div>
-
 
 <div class="PageNavigation">
   
+    <a class="prev" href="/c++/2022/02/23/Templates-in-c++.html">&laquo; Templates in C++</a>
   
-    <a class="next" href="/linux/2022/02/10/jq-command-in-Linux.html">JQ command in Linux with Examples &raquo;</a>
+  
+    <a class="next" href="/rust/2022/02/26/The-beginning-of-Rust-1.html">The beginning of Rust(1) &raquo;</a>
   
 </div>
 
@@ -328,8 +338,8 @@
   <script type="text/javascript">
     /* <![CDATA[ */
     var disqus_shortname = "s-annie-blog";
-    var disqus_identifier = "http://localhost:4000_Curl command in Linux with Examples";
-    var disqus_title = "Curl command in Linux with Examples";
+    var disqus_identifier = "http://localhost:4000_Rapidly-exploring random tree";
+    var disqus_title = "Rapidly-exploring random tree";
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {

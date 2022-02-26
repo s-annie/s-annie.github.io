@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/static/img/rose.ico" />
-    <title>Curl command in Linux with Examples - Annie's repository</title>
+    <title>Templates in C++ - Annie's repository</title>
     <meta name="author" content="s-annie" />
-    <meta name="description" content="Curl command in Linux with Examples" />
-    <meta name="keywords" content="Curl command in Linux with Examples, Annie's repository, linux" />
+    <meta name="description" content="Templates in C++" />
+    <meta name="keywords" content="Templates in C++, Annie's repository, C++" />
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
     <meta content="" property="fb:app_id">
     <meta content="Annie's repository" property="og:site_name">
@@ -16,7 +16,7 @@
     
 
     
-      <meta content="Curl command in Linux with Examples" property="og:title">
+      <meta content="Templates in C++" property="og:title">
       <meta content="article" property="og:type">
     
 
@@ -25,11 +25,11 @@
     
 
     
-      <meta content="http://localhost:4000/linux/2022/02/10/Using-curl-command.html" property="og:url">
+      <meta content="http://localhost:4000/c++/2022/02/23/Templates-in-c++.html" property="og:url">
     
 
     
-      <meta content="2022-02-10T00:00:00+09:00" property="article:published_time">
+      <meta content="2022-02-23T00:00:00+09:00" property="article:published_time">
       <meta content="http://localhost:4000/about/" property="article:author">
     
 
@@ -37,7 +37,7 @@
 
     
       
-        <meta content="linux" property="article:section">
+        <meta content="C++" property="article:section">
       
     
 
@@ -50,11 +50,11 @@
     <meta name="twitter:creator" content="@">
 
     
-      <meta name="twitter:title" content="Curl command in Linux with Examples">
+      <meta name="twitter:title" content="Templates in C++">
     
 
     
-      <meta name="twitter:url" content="http://localhost:4000/linux/2022/02/10/Using-curl-command.html">
+      <meta name="twitter:url" content="http://localhost:4000/c++/2022/02/23/Templates-in-c++.html">
     
 
     
@@ -115,18 +115,92 @@
       </div>
       <div class="col-sm-8 col-offset-1 main-layout">
         <header class="post-header">
-  <h1 class="post-title">Curl command in Linux with Examples</h1>
+  <h1 class="post-title">Templates in C++</h1>
 </header>
 
-<span class="time">10 Feb 2022</span>
+<span class="time">23 Feb 2022</span>
 
   <span class="categories">
-    &raquo; <a href="/category/linux">linux</a>
+    &raquo; <a href="/category/C++">C++</a>
   </span>
 
 
 <div class="content">
-  <div class="post"><p>curl is a tool for transferring data from or to a server.</p>
+  <div class="post"><h2 id="what-is-templates-in-c">What is Templates in C++?</h2>
+<p>Templates in c++ is defined as a blueprint or formula for creating a generic class or a function. You can create a single function/class to work with different data types using templates.</p>
+
+<p>Thera are two types of templates in C++, class templates and function templates.</p>
+
+<h3 id="function-template-example">function template example</h3>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="p">&gt;</span>
+<span class="n">T</span> <span class="nf">max</span><span class="p">(</span><span class="n">T</span> <span class="n">d1</span><span class="p">,</span> <span class="n">T</span> <span class="n">d2</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">d1</span> <span class="o">&lt;</span> <span class="n">d2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">d1</span><span class="p">;</span>
+  <span class="k">return</span> <span class="n">d2</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">float</span> <span class="n">f</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="mf">8.7</span><span class="p">);</span>
+  <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">800</span><span class="p">);</span>
+  <span class="kt">char</span> <span class="n">ch</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="sc">'A'</span><span class="p">,</span> <span class="sc">'Q'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">template</code> can alse be used on some special occasions. <br />
+For example, using the <code class="language-plaintext highlighter-rouge">max</code> function above to compare character strings in C.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name1</span> <span class="o">=</span> <span class="s">"Able"</span><span class="p">;</span>
+  <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name2</span> <span class="o">=</span> <span class="s">"Baker"</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">max</span><span class="p">(</span><span class="n">name1</span><span class="p">,</span> <span class="n">name2</span><span class="p">)</span> <span class="o">&lt;&lt;</span> <span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+</code></pre></div></div>
+<p>Here is the problem. In the function <code class="language-plaintext highlighter-rouge">max</code>, the pointer of <code class="language-plaintext highlighter-rouge">name1</code> and <code class="language-plaintext highlighter-rouge">name2</code> will be compared instead of the data. We would like to use <code class="language-plaintext highlighter-rouge">strcmp</code> on this case. Another <code class="language-plaintext highlighter-rouge">max</code> for this special occasion can be added like this.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="k">const</span> <span class="nf">max</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="k">const</span> <span class="n">d1</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span> <span class="k">const</span> <span class="n">d2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">strcmp</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span> <span class="n">d2</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="k">return</span> <span class="n">d1</span><span class="p">;</span>
+    <span class="k">return</span> <span class="n">d2</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="class-template-example">class template example</h3>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;cstdlib&gt;
+#include &lt;iostream&gt;
+#include &lt;assert.h&gt;
+</span>
+<span class="k">const</span> <span class="kt">int</span> <span class="n">STACK_SIZE</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+
+<span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="p">&gt;</span>
+<span class="k">class</span> <span class="nc">stack</span> <span class="p">{</span>
+    <span class="nl">private:</span>
+      <span class="kt">int</span> <span class="n">count</span><span class="p">;</span>
+      <span class="n">T</span> <span class="n">data</span><span class="p">[</span><span class="n">STACK_SIZE</span><span class="p">];</span>
+    <span class="nl">public:</span>
+      <span class="n">stack</span><span class="p">()</span> <span class="p">{</span>
+          <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="kt">void</span> <span class="n">push</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">item</span><span class="p">)</span> <span class="p">{</span>
+          <span class="n">assert</span><span class="p">(</span><span class="n">count</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">);</span>
+          <span class="n">assert</span><span class="p">(</span><span class="n">count</span> <span class="o">&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])));</span>
+          <span class="n">data</span><span class="p">[</span><span class="n">count</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span><span class="p">;</span>
+          <span class="o">++</span><span class="n">count</span><span class="p">;</span>
+      <span class="p">}</span>
+      <span class="n">T</span> <span class="n">pop</span><span class="p">()</span> <span class="p">{</span>
+          <span class="o">--</span><span class="n">count</span><span class="p">;</span>
+          <span class="n">assert</span><span class="p">(</span><span class="n">count</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">);</span>
+          <span class="n">assert</span><span class="p">(</span><span class="n">count</span> <span class="o">&lt;</span> <span class="k">static_cast</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">/</span><span class="k">sizeof</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])));</span>
+          <span class="k">return</span> <span class="n">data</span><span class="p">[</span><span class="n">count</span><span class="p">]</span>
+      <span class="p">}</span>
+
+<span class="p">};</span>
+</code></pre></div></div>
+<p>The instance should be declared like this.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">stack</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">a_stack</span><span class="p">;</span>
+</code></pre></div></div>
+<p>And if you want to implement a public memeber function outside the class, it should be like this.</p>
+<div class="language-cpp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">template</span><span class="o">&lt;</span><span class="k">class</span> <span class="nc">T</span><span class="p">&gt;</span>
+<span class="kr">inline</span> <span class="kt">void</span> <span class="n">stack</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;::</span><span class="n">push</span><span class="p">(</span><span class="k">const</span> <span class="n">T</span> <span class="n">item</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// pass</span>
+<span class="p">}</span>
+</code></pre></div></div>
 </div>
   <div class="share-page">
   <span style="float: left;">Share this on &rarr;&nbsp;&nbsp;</span>
@@ -136,7 +210,7 @@
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
   <!-- Facebook -->
-  <div class="fb-share-button" data-href="http://localhost:4000/linux/2022/02/10/Using-curl-command.html" data-layout="button_count" style="position: relative; top: -8px; left: 3px;"></div>
+  <div class="fb-share-button" data-href="http://localhost:4000/c++/2022/02/23/Templates-in-c++.html" data-layout="button_count" style="position: relative; top: -8px; left: 3px;"></div>
 </div>
 
 <div id="fb-root"></div>
@@ -245,20 +319,6 @@
       
         
           
-            
-            <div class="panel-body">
-              <h4>Related Posts</h4>
-              <ul>
-            
-                <li class="relatedPost">
-                  <a href="http://localhost:4000/linux/bash/2022/02/15/sed-command.html">Sed command in linux</a>
-                  
-                    (Categories: <a href="/category/linux">linux</a>, <a href="/category/bash">bash</a>)
-                  
-                </li>
-          
-          
-        
       
     
         
@@ -270,16 +330,6 @@
       
         
           
-            
-                <li class="relatedPost">
-                  <a href="http://localhost:4000/linux/bash/2022/02/15/regular-expression.html">Regular expression</a>
-                  
-                    (Categories: <a href="/category/linux">linux</a>, <a href="/category/bash">bash</a>)
-                  
-                </li>
-          
-          
-        
       
     
         
@@ -291,16 +341,6 @@
       
         
           
-            
-                <li class="relatedPost">
-                  <a href="http://localhost:4000/linux/2022/02/10/jq-command-in-Linux.html">JQ command in Linux with Examples</a>
-                  
-                    (Categories: <a href="/category/linux">linux</a>)
-                  
-                </li>
-          
-          
-        
       
     
   
@@ -312,14 +352,13 @@
     
   
   
-  </ul>
-</div>
-
 
 <div class="PageNavigation">
   
+    <a class="prev" href="/bash/2022/02/21/Print-colums-as-table-in-bash.html">&laquo; Print columns as a table in bash</a>
   
-    <a class="next" href="/linux/2022/02/10/jq-command-in-Linux.html">JQ command in Linux with Examples &raquo;</a>
+  
+    <a class="next" href="/robotics/2022/02/26/Rapiedly-exploring-random-tree.html">Rapidly-exploring random tree &raquo;</a>
   
 </div>
 
@@ -328,8 +367,8 @@
   <script type="text/javascript">
     /* <![CDATA[ */
     var disqus_shortname = "s-annie-blog";
-    var disqus_identifier = "http://localhost:4000_Curl command in Linux with Examples";
-    var disqus_title = "Curl command in Linux with Examples";
+    var disqus_identifier = "http://localhost:4000_Templates in C++";
+    var disqus_title = "Templates in C++";
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {

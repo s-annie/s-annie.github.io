@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/static/img/rose.ico" />
-    <title>Curl command in Linux with Examples - Annie's repository</title>
+    <title>The beginning of Rust(2) - Annie's repository</title>
     <meta name="author" content="s-annie" />
-    <meta name="description" content="Curl command in Linux with Examples" />
-    <meta name="keywords" content="Curl command in Linux with Examples, Annie's repository, linux" />
+    <meta name="description" content="The beginning of Rust(2)" />
+    <meta name="keywords" content="The beginning of Rust(2), Annie's repository, Rust" />
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
     <meta content="" property="fb:app_id">
     <meta content="Annie's repository" property="og:site_name">
@@ -16,7 +16,7 @@
     
 
     
-      <meta content="Curl command in Linux with Examples" property="og:title">
+      <meta content="The beginning of Rust(2)" property="og:title">
       <meta content="article" property="og:type">
     
 
@@ -25,11 +25,11 @@
     
 
     
-      <meta content="http://localhost:4000/linux/2022/02/10/Using-curl-command.html" property="og:url">
+      <meta content="http://localhost:4000/rust/2022/02/26/The-beginning-of-Rust-2.html" property="og:url">
     
 
     
-      <meta content="2022-02-10T00:00:00+09:00" property="article:published_time">
+      <meta content="2022-02-26T00:00:00+09:00" property="article:published_time">
       <meta content="http://localhost:4000/about/" property="article:author">
     
 
@@ -37,7 +37,7 @@
 
     
       
-        <meta content="linux" property="article:section">
+        <meta content="Rust" property="article:section">
       
     
 
@@ -50,11 +50,11 @@
     <meta name="twitter:creator" content="@">
 
     
-      <meta name="twitter:title" content="Curl command in Linux with Examples">
+      <meta name="twitter:title" content="The beginning of Rust(2)">
     
 
     
-      <meta name="twitter:url" content="http://localhost:4000/linux/2022/02/10/Using-curl-command.html">
+      <meta name="twitter:url" content="http://localhost:4000/rust/2022/02/26/The-beginning-of-Rust-2.html">
     
 
     
@@ -115,18 +115,71 @@
       </div>
       <div class="col-sm-8 col-offset-1 main-layout">
         <header class="post-header">
-  <h1 class="post-title">Curl command in Linux with Examples</h1>
+  <h1 class="post-title">The beginning of Rust(2)</h1>
 </header>
 
-<span class="time">10 Feb 2022</span>
+<span class="time">26 Feb 2022</span>
 
   <span class="categories">
-    &raquo; <a href="/category/linux">linux</a>
+    &raquo; <a href="/category/Rust">Rust</a>
   </span>
 
 
 <div class="content">
-  <div class="post"><p>curl is a tool for transferring data from or to a server.</p>
+  <div class="post"><h2 id="preview">Preview</h2>
+<p>In this article, I will follow <a href="https://doc.rust-lang.org/stable/book/ch02-00-guessing-game-tutorial.html">Programming a Guessing name</a> to learn some basic syntax and concepts of Rust.</p>
+
+<h3 id="full-sample-code">Full sample code</h3>
+<p>github repo: https://github.com/s-annie/rust-tutorials/tree/main/guessing_name</p>
+<div class="language-rust highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">use</span> <span class="nn">std</span><span class="p">::</span><span class="n">io</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">rang</span><span class="p">::</span><span class="n">Rng</span><span class="p">;</span>
+
+<span class="k">fn</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nd">println!</span><span class="p">(</span><span class="s">"Guess the number!"</span><span class="p">);</span>
+    <span class="k">let</span> <span class="n">secret_number</span> <span class="o">=</span> <span class="nn">rand</span><span class="p">::</span><span class="nf">thread_rng</span><span class="p">()</span><span class="nf">.gen_range</span><span class="p">(</span><span class="mi">1</span><span class="o">..</span><span class="mi">101</span><span class="p">);</span>
+    <span class="k">loop</span> <span class="p">{</span>
+        <span class="nd">println!</span><span class="p">(</span><span class="s">"Please input your guess."</span><span class="p">);</span>
+        <span class="k">let</span> <span class="k">mut</span> <span class="n">guess</span> <span class="o">=</span> <span class="nn">String</span><span class="p">::</span><span class="nf">new</span><span class="p">();</span>
+        <span class="nn">io</span><span class="p">::</span><span class="nf">stdin</span><span class="p">()</span>
+            <span class="nf">.read_line</span><span class="p">(</span><span class="o">&amp;</span><span class="k">mut</span> <span class="n">guess</span><span class="p">)</span>
+            <span class="nf">.expect</span><span class="p">(</span><span class="s">"Failed to read line"</span><span class="p">);</span>
+
+        <span class="k">let</span> <span class="n">guess</span><span class="p">:</span> <span class="nb">u32</span> <span class="o">=</span> <span class="k">match</span> <span class="n">guess</span><span class="nf">.trim</span><span class="p">()</span><span class="nf">.parse</span><span class="p">()</span> <span class="p">{</span>
+            <span class="nf">Ok</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="n">num</span><span class="p">,</span>
+            <span class="nf">Err</span><span class="p">(</span><span class="mi">_</span><span class="p">)</span> <span class="k">=&gt;</span> <span class="k">continue</span><span class="p">,</span>
+        <span class="p">};</span>
+        <span class="nd">println!</span><span class="p">(</span><span class="s">"The secret number is:{}, You guessed: {}"</span><span class="p">,</span> <span class="n">secret_number</span><span class="p">,</span> <span class="n">guess</span><span class="p">);</span>
+
+        <span class="n">march</span> <span class="n">guess</span><span class="nf">.cmp</span><span class="p">(</span><span class="o">&amp;</span><span class="n">secret_number</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">Ordering</span><span class="p">:</span><span class="n">Less</span> <span class="k">=&gt;</span> <span class="nd">println!</span><span class="p">(</span><span class="s">"Too small!"</span><span class="p">),</span>
+            <span class="n">Ordering</span><span class="p">:</span><span class="n">Greater</span> <span class="k">=&gt;</span> <span class="nd">println!</span><span class="p">(</span><span class="s">"Too big!"</span><span class="p">),</span>
+            <span class="n">Ordering</span><span class="p">:</span><span class="n">Equal</span> <span class="k">=&gt;</span> <span class="p">{</span>
+                <span class="nd">println!</span><span class="p">(</span><span class="s">"You win!!"</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h3 id="dive-into-the-code">Dive into the code</h3>
+<h4 id="stdio"><code class="language-plaintext highlighter-rouge">std::io</code></h4>
+<p>By default, Rust has few items defines in the standard library that it brings into the scope of every program. This set is called the <code class="language-plaintext highlighter-rouge">prelude</code>. <br />
+If a type you want to use isn`t in the prelude, you have to bring that type into scope exlicitly with a use statement.</p>
+
+<h5 id="let-mut-guess--stringnew"><code class="language-plaintext highlighter-rouge">let mut guess = String::new()</code></h5>
+<p><code class="language-plaintext highlighter-rouge">let</code> statement is used to create the variable. For example, <code class="language-plaintext highlighter-rouge">let apples = 5</code> creates a new variable named <code class="language-plaintext highlighter-rouge">apples</code> and binds it to the value 5. <br />
+In Rust, variables are immutable by default. <code class="language-plaintext highlighter-rouge">mut</code> can make a variable mutable. <br />
+<code class="language-plaintext highlighter-rouge">String::new()</code> returns a new instance of s <code class="language-plaintext highlighter-rouge">String</code>. So in full, the line has created a mutable variable that is currently bound to a new, empty instance of a <code class="language-plaintext highlighter-rouge">String</code>.</p>
+
+<h4 id="iostdin-readlinemut-guess"><code class="language-plaintext highlighter-rouge">io::stdin()</code>, <code class="language-plaintext highlighter-rouge">.readline(&amp;mut guess)</code></h4>
+<p><code class="language-plaintext highlighter-rouge">stdin()</code> functions allow us to handle input. The line <code class="language-plaintext highlighter-rouge">.read_lin(&amp;mut guess)</code> calls the <code class="language-plaintext highlighter-rouge">read_line</code> method on the input handle, which’s full job is to take whatever the user types into standard input and append that into a string.
+The <code class="language-plaintext highlighter-rouge">&amp;</code> indicates taht this argument is a reference. References are a complex feature, and ont the Rust’s major advantages is how safe and easy it is to use references. Later in the other chapters it will be explained more thoroughly.</p>
+
+<h4 id="let-guess-u32--match-guesstrimparse"><code class="language-plaintext highlighter-rouge">let guess: u32 = match guess.trim().parse()</code></h4>
+<p>Rust allows us to shadow the previous value of guess with a new one. Shadowing let us reuse the guess variable name. We bind this new variable to the expression <code class="language-plaintext highlighter-rouge">guess().trim().parse()</code>.<br />
+The <code class="language-plaintext highlighter-rouge">guess</code> in the expression refers to the original variable that contained the input as s string. The <code class="language-plaintext highlighter-rouge">trim</code> method on a <code class="language-plaintext highlighter-rouge">String</code> instance will eiliminate any whitespace at the beginning and end. The <code class="language-plaintext highlighter-rouge">parse</code> method on Strings parsed a string into some kind of number. The colon after guess tells Rust we’ll annotate the variable’s type.</p>
+
+<p><code class="language-plaintext highlighter-rouge">match</code> is used to handle the error. The parse returns a Result type, which is an enum that has the variants <code class="language-plaintext highlighter-rouge">Ok</code> or <code class="language-plaintext highlighter-rouge">Err</code>. If parse is able to successfully turn the string into a number, it will return an <code class="language-plaintext highlighter-rouge">Ok</code> value that contains the resulting number.</p>
 </div>
   <div class="share-page">
   <span style="float: left;">Share this on &rarr;&nbsp;&nbsp;</span>
@@ -136,7 +189,7 @@
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
   <!-- Facebook -->
-  <div class="fb-share-button" data-href="http://localhost:4000/linux/2022/02/10/Using-curl-command.html" data-layout="button_count" style="position: relative; top: -8px; left: 3px;"></div>
+  <div class="fb-share-button" data-href="http://localhost:4000/rust/2022/02/26/The-beginning-of-Rust-2.html" data-layout="button_count" style="position: relative; top: -8px; left: 3px;"></div>
 </div>
 
 <div id="fb-root"></div>
@@ -163,102 +216,55 @@
       
         
           
-      
-    
-  
-    
-      
-        
-          
-      
-    
-  
-    
-      
-        
-          
-      
-    
-  
-    
-      
-        
-          
-      
-    
-  
-    
-      
-        
-          
-      
-    
-  
-    
-      
-        
-          
-      
-    
-        
-          
-      
-    
-  
-    
-      
-        
-          
-      
-    
-  
-    
-      
-        
-          
-      
-    
-        
-          
-      
-    
-        
-          
-      
-    
-  
-    
-      
-        
-          
-      
-    
-  
-    
-      
-        
-          
-      
-    
-  
-    
-      
-        
-          
             
             <div class="panel-body">
               <h4>Related Posts</h4>
               <ul>
             
                 <li class="relatedPost">
-                  <a href="http://localhost:4000/linux/bash/2022/02/15/sed-command.html">Sed command in linux</a>
+                  <a href="http://localhost:4000/rust/2022/02/26/The-beginning-of-Rust-1.html">The beginning of Rust(1)</a>
                   
-                    (Categories: <a href="/category/linux">linux</a>, <a href="/category/bash">bash</a>)
+                    (Categories: <a href="/category/Rust">Rust</a>)
                   
                 </li>
           
           
         
+      
+    
+  
+    
+      
+        
+          
+      
+    
+  
+    
+      
+        
+          
+      
+    
+  
+    
+      
+        
+          
+      
+    
+  
+    
+      
+        
+          
+      
+    
+  
+    
+      
+        
+          
       
     
         
@@ -270,16 +276,17 @@
       
         
           
-            
-                <li class="relatedPost">
-                  <a href="http://localhost:4000/linux/bash/2022/02/15/regular-expression.html">Regular expression</a>
-                  
-                    (Categories: <a href="/category/linux">linux</a>, <a href="/category/bash">bash</a>)
-                  
-                </li>
-          
-          
+      
+    
+  
+    
+      
         
+          
+      
+    
+        
+          
       
     
         
@@ -291,16 +298,42 @@
       
         
           
-            
-                <li class="relatedPost">
-                  <a href="http://localhost:4000/linux/2022/02/10/jq-command-in-Linux.html">JQ command in Linux with Examples</a>
-                  
-                    (Categories: <a href="/category/linux">linux</a>)
-                  
-                </li>
-          
-          
+      
+    
+  
+    
+      
         
+          
+      
+    
+  
+    
+      
+        
+          
+      
+    
+        
+          
+      
+    
+  
+    
+      
+        
+          
+      
+    
+        
+          
+      
+    
+  
+    
+      
+        
+          
       
     
   
@@ -318,8 +351,8 @@
 
 <div class="PageNavigation">
   
+    <a class="prev" href="/rust/2022/02/26/The-beginning-of-Rust-1.html">&laquo; The beginning of Rust(1)</a>
   
-    <a class="next" href="/linux/2022/02/10/jq-command-in-Linux.html">JQ command in Linux with Examples &raquo;</a>
   
 </div>
 
@@ -328,8 +361,8 @@
   <script type="text/javascript">
     /* <![CDATA[ */
     var disqus_shortname = "s-annie-blog";
-    var disqus_identifier = "http://localhost:4000_Curl command in Linux with Examples";
-    var disqus_title = "Curl command in Linux with Examples";
+    var disqus_identifier = "http://localhost:4000_The beginning of Rust(2)";
+    var disqus_title = "The beginning of Rust(2)";
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
