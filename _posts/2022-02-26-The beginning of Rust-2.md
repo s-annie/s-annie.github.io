@@ -42,7 +42,7 @@ fn main() {
 }
 ```
 ### Dive into the code
-##### `std::io`
+#### `std::io`
 By default, Rust has few items defines in the standard library that it brings into the scope of every program. This set is called the `prelude`.   
 If a type you want to use isn`t in the prelude, you have to bring that type into scope exlicitly with a use statement.
 
@@ -51,11 +51,11 @@ If a type you want to use isn`t in the prelude, you have to bring that type into
 In Rust, variables are immutable by default. `mut` can make a variable mutable.   
 `String::new()` returns a new instance of s `String`. So in full, the line has created a mutable variable that is currently bound to a new, empty instance of a `String`.
 
-##### `io::stdin()`, `.readline(&mut guess)`
+#### `io::stdin()`, `.readline(&mut guess)`
 `stdin()` functions allow us to handle input. The line `.read_lin(&mut guess)` calls the `read_line` method on the input handle, which's full job is to take whatever the user types into standard input and append that into a string.
 The `&` indicates taht this argument is a reference. References are a complex feature, and ont the Rust's major advantages is how safe and easy it is to use references. Later in the other chapters it will be explained more thoroughly.
 
-##### `let guess: u32 = match guess.trim().parse()`
+#### `let guess: u32 = match guess.trim().parse()`
 Rust allows us to shadow the previous value of guess with a new one. Shadowing let us reuse the guess variable name. We bind this new variable to the expression `guess().trim().parse()`.  
 The `guess` in the expression refers to the original variable that contained the input as s string. The `trim` method on a `String` instance will eiliminate any whitespace at the beginning and end. The `parse` method on Strings parsed a string into some kind of number. The colon after guess tells Rust we'll annotate the variable's type.
 
