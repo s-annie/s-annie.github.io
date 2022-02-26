@@ -3,16 +3,16 @@ layout: default
 ---
 
 <div id="home">
-  <h1>{{ Reviews }}</h1>
+  <h1>Reviews</h1>
   <hr />
 
   <ol class="posts">
-    {% for post in paginator.posts %}
+    {% for post in page.posts %}
       <li><a href="{{ post.url }}">{{ post.title }}</a> &raquo; <i><span>{{ post.date | date_to_string }}</span></i></li>
     {% endfor %}
   </ol>
 
-  <!-- Pagination links -->
+  <!-- Pagination links
   {% if paginator.total_pages > 1 %}
     <ul class="pagination pagination-sm">
       {% if paginator.previous_page %}
@@ -41,5 +41,5 @@ layout: default
         <li class="disabled"><span>&raquo;</span></li>
       {% endif %}
     </ul>
-  {% endif %}
+  {% endif %} -->
 </div><!-- end #home -->
