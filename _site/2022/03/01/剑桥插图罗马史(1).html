@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/static/img/rose.ico" />
-    <title>Sed command in linux - Annie's repository</title>
+    <title>剑桥插图罗马史 - Annie's repository</title>
     <meta name="author" content="s-annie" />
-    <meta name="description" content="Sed command in linux" />
-    <meta name="keywords" content="Sed command in linux, Annie's repository, linux, bash" />
+    <meta name="description" content="剑桥插图罗马史" />
+    <meta name="keywords" content="剑桥插图罗马史, Annie's repository, " />
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
     <meta content="" property="fb:app_id">
     <meta content="Annie's repository" property="og:site_name">
@@ -16,7 +16,7 @@
     
 
     
-      <meta content="Sed command in linux" property="og:title">
+      <meta content="剑桥插图罗马史" property="og:title">
       <meta content="article" property="og:type">
     
 
@@ -25,19 +25,17 @@
     
 
     
-      <meta content="http://localhost:4000/linux/bash/2022/02/15/sed-command.html" property="og:url">
+      <meta content="http://localhost:4000/2022/03/01/%E5%89%91%E6%A1%A5%E6%8F%92%E5%9B%BE%E7%BD%97%E9%A9%AC%E5%8F%B2(1).html" property="og:url">
     
 
     
-      <meta content="2022-02-15T00:00:00+09:00" property="article:published_time">
+      <meta content="2022-03-01T00:00:00+09:00" property="article:published_time">
       <meta content="http://localhost:4000/about/" property="article:author">
     
 
     
 
     
-      
-        <meta content="linux" property="article:section">
       
     
 
@@ -50,11 +48,11 @@
     <meta name="twitter:creator" content="@">
 
     
-      <meta name="twitter:title" content="Sed command in linux">
+      <meta name="twitter:title" content="剑桥插图罗马史">
     
 
     
-      <meta name="twitter:url" content="http://localhost:4000/linux/bash/2022/02/15/sed-command.html">
+      <meta name="twitter:url" content="http://localhost:4000/2022/03/01/%E5%89%91%E6%A1%A5%E6%8F%92%E5%9B%BE%E7%BD%97%E9%A9%AC%E5%8F%B2(1).html">
     
 
     
@@ -116,53 +114,18 @@
       </div>
       <div class="col-sm-8 col-offset-1 main-layout">
         <header class="post-header">
-  <h1 class="post-title">Sed command in linux</h1>
+  <h1 class="post-title">剑桥插图罗马史</h1>
 </header>
 
-<span class="time">15 Feb 2022</span>
+<span class="time">01 Mar 2022</span>
 
   <span class="categories">
-    &raquo; <a href="/category/linux">linux</a>, <a href="/category/bash">bash</a>
+    &raquo; 
   </span>
 
 
 <div class="content">
-  <div class="post"><p><code class="language-plaintext highlighter-rouge">sed</code> is a stream editor, it filters and transforms text.<br />
-The sed utility reads the specifiled files, or the standard input if no files are specified, modifying the input as specified by a list of commands. The input is then written to the standard output.</p>
-
-<h3 id="mostly-used-options">Mostly used options</h3>
-
-<p>-e [command] 
-    Append the editing commands specified by the command argument to the list of commands.
-    The form of a sed command is as follows:
-        [address[,address]]function[arguments]</p>
-
-<p>-i [extension]
-    Edit files in-place, saving backups with the specified extension.</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat </span>hoge.txt | <span class="nb">sed</span> <span class="nt">-e</span> <span class="s1">'s/xxx/XXX/g'</span>
-<span class="nb">sed</span> <span class="nt">-e</span> <span class="s1">'s/xxx/XXX/g'</span> ./hoge.txt <span class="o">&gt;</span> ./hoge_new.txt
-<span class="nb">sed</span> <span class="nt">-i</span> <span class="nt">-e</span> <span class="s1">'s/xxx/XXX/g'</span> ./hoge.txt /hoge2.txt    <span class="c"># multiple files can be selected</span>
-</code></pre></div></div>
-
-<h4 id="functions-and-address">Functions and address</h4>
-
-<p>s/regular expression/replacement flags
-    Substitute the replacement string for the first instance of the regular expression in the pattern space.<br />
-    The value of flags in the substitute function is zero or more of the following.<br />
-        g: Make the substitution for all non-overlapping matches of the regular expression, not just the first one.</p>
-
-<p>d: Delete the pattern space and start the next cycle.<br />
-p: Write the pattern space to standard output.</p>
-
-<p>An address is not required, but if specified must be a number, a dollar character that addressed the last line of input, or a context address(which consists of a regular expression preceded and followed by a delimeter).</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sed</span> <span class="nt">-n</span> <span class="nt">-e</span> 1p         <span class="c"># Ouput the first line. </span>
-<span class="nb">sed</span> <span class="nt">-n</span> <span class="nt">-e</span> <span class="se">\$</span>p        <span class="c"># Ouput the last line. </span>
-<span class="nb">sed</span> <span class="nt">-n</span> <span class="nt">-e</span> 6,15p      <span class="c"># Ouput line6~15. </span>
-<span class="nb">sed</span> <span class="nt">-n</span> <span class="nt">-e</span> 1~5p       <span class="c"># Output line1, 6, 11...</span>
-<span class="nb">sed</span> <span class="nt">-n</span> <span class="nt">-e</span> <span class="s1">'\%xxx%p'</span>  <span class="c"># Output the lines that matches the regular expression.</span>
-</code></pre></div></div>
+  <div class="post"><p>这是我的第一篇中文读书笔记。</p>
 </div>
   <div class="share-page">
   <span style="float: left;">Share this on &rarr;&nbsp;&nbsp;</span>
@@ -172,7 +135,7 @@ p: Write the pattern space to standard output.</p>
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
   <!-- Facebook -->
-  <div class="fb-share-button" data-href="http://localhost:4000/linux/bash/2022/02/15/sed-command.html" data-layout="button_count" style="position: relative; top: -8px; left: 3px;"></div>
+  <div class="fb-share-button" data-href="http://localhost:4000/2022/03/01/%E5%89%91%E6%A1%A5%E6%8F%92%E5%9B%BE%E7%BD%97%E9%A9%AC%E5%8F%B2(1).html" data-layout="button_count" style="position: relative; top: -8px; left: 3px;"></div>
 </div>
 
 <div id="fb-root"></div>
@@ -197,223 +160,94 @@ p: Write the pattern space to standard output.</p>
     
       
         
-          
-      
-          
-      
     
   
     
       
         
-          
-      
-          
-      
     
   
     
       
         
-          
-      
-          
-      
     
   
     
       
         
-          
-      
-          
-      
     
   
     
       
         
-          
-      
-          
-            
-            <div class="panel-body">
-              <h4>Related Posts</h4>
-              <ul>
-            
-                <li class="relatedPost">
-                  <a href="http://localhost:4000/bash/2022/02/21/Print-colums-as-table-in-bash.html">Print columns as a table in bash</a>
-                  
-                    (Categories: <a href="/category/bash">bash</a>)
-                  
-                </li>
-          
-          
-        
-      
     
   
     
       
         
-          
-      
-          
-      
     
   
     
       
         
-          
-      
-          
-      
     
         
-          
-      
-          
-      
     
   
     
       
         
-          
-      
-          
-      
     
   
     
       
         
-          
-      
-          
-      
     
         
-          
-      
-          
-      
     
         
-          
-      
-          
-      
     
   
     
       
         
-          
-      
-          
-      
     
   
     
       
         
-          
-      
-          
-      
     
   
     
       
         
-          
-      
-          
-      
     
         
-          
-      
-          
-      
     
   
     
       
         
-          
-            
-                <li class="relatedPost">
-                  <a href="http://localhost:4000/linux/bash/2022/02/15/regular-expression.html">Regular expression</a>
-                  
-                    (Categories: <a href="/category/linux">linux</a>, <a href="/category/bash">bash</a>)
-                  
-                </li>
-          
-          
-        
-      
-          
-      
     
         
-          
-      
-          
-      
     
   
     
       
         
-          
-            
-                <li class="relatedPost">
-                  <a href="http://localhost:4000/linux/2022/02/10/jq-command-in-Linux.html">JQ command in Linux with Examples</a>
-                  
-                    (Categories: <a href="/category/linux">linux</a>)
-                  
-                </li>
-          
-          
-        
-      
-          
-      
     
   
     
       
         
-          
-            
-                <li class="relatedPost">
-                  <a href="http://localhost:4000/linux/2022/02/10/Using-curl-command.html">Curl command in Linux with Examples</a>
-                  
-                    (Categories: <a href="/category/linux">linux</a>)
-                  
-                </li>
-          
-          
-        
-      
-          
-      
     
   
   
-  </ul>
-</div>
-
 
 <div class="PageNavigation">
   
-    <a class="prev" href="/linux/bash/2022/02/15/regular-expression.html">&laquo; Regular expression</a>
+    <a class="prev" href="/2022/03/01/Creating-Ubuntu-Docker-Container-on-MacOS.html">&laquo; Creating ubuntu docker container on macos</a>
   
-  
-    <a class="next" href="/python/2022/02/16/Reading-files-in-Python.html">Reading files in Python &raquo;</a>
   
 </div>
 
@@ -422,8 +256,8 @@ p: Write the pattern space to standard output.</p>
   <script type="text/javascript">
     /* <![CDATA[ */
     var disqus_shortname = "s-annie-blog";
-    var disqus_identifier = "http://localhost:4000_Sed command in linux";
-    var disqus_title = "Sed command in linux";
+    var disqus_identifier = "http://localhost:4000_剑桥插图罗马史";
+    var disqus_title = "剑桥插图罗马史";
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
