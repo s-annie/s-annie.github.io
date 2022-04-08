@@ -1,5 +1,5 @@
-# title: Welcome to Flexton
-# description: Flexton is a responsive and ultra-minimal theme for Jekyll.
+title: Once in a blue moon
+description: 生き溺れてもまた春に会いましょう！
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "s-annie.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
@@ -9,7 +9,7 @@ author-image:   walle.png
 # author-job:     Web Developer
 # author-email:   your-email@domain.com # Add your email for contant form.
 # author-twitter: artemsheludko_ # Add your twitter account
-about-author:   生き溺れてもまた春に会いましょう！
+# about-author:   生き溺れてもまた春に会いましょう！
 
 # Social settings
 # social-twitter:   artemsheludko_
