@@ -4,9 +4,9 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "s-annie.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Author
-author-name:    Annie
-author-image:   profile.jpg
-# author-job:     Web Developer
+author-name:    Annie Shan
+author-image:   original.jpg
+# author-job:  
 # author-email:   your-email@domain.com # Add your email for contant form.
 # author-twitter: artemsheludko_ # Add your twitter account
 about-author:   生き溺れてもまた春に会いましょう！
