@@ -23,7 +23,7 @@ While counter < lim:
 Return G
 ```
 
-RRT* is an optomozed version of RRT. When the number of nodes approaches infinity, the RRT* algorithm will feliver the shortest possible path to the goal.
+RRT* is an optimized version of RRT. When the number of nodes approaches infinitely, the RRT* algorithm will feliver the shortest possible path to the goal.
 It is based on RRT, but two key additions to the algorithm result in significantly different results.
 First , RRT* records the distance each vertex has traveled relative to its parent vertex. This is referred to as the cost() of the vertex. 
 After the closest node is found in the graph, a neighborhood of verticles in a fixed radius from a new node are examined. 
