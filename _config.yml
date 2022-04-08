@@ -1,52 +1,53 @@
-# title: 人生到处知何似？应似飞鸿踏雪泥
-title: Annie's repository
-# description: My Personal Stack Problems
-author: s-annie
-disqus_shortname: s-annie-blog
+title: Welcome to Flexton
+description: Flexton is a responsive and ultra-minimal theme for Jekyll.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "flexton.netlify.com" # the base hostname & protocol for your site, e.g. http://example.com
 
-enableTags: true
-tagarray: []
+# Author
+author-name:    Clayton Hanson
+author-image:   1.jpg
+author-job:     Web Developer
+author-email:   your-email@domain.com # Add your email for contant form.
+author-twitter: artemsheludko_ # Add your twitter account
+about-author:   I am a web developer focusing on front-end development. Always hungry to keep learning.
 
-collections:
-  project:
-    output: true
-    permalink: /project/:path/
+# Social settings
+social-twitter:   artemsheludko_
+social-facebook:
+social-github:    artemsheludko
+social-pinterest: artemsheludko
+social-instagram: artemsheludko_
+social-youtube:
+social-vk:   
+social-linkedin:
 
-# social:
-    # - icon: fa-facebook
-    #   link: "#"
-    # - icon: fa-twitter
-    #   link: "#"
-    # - icon: fa-linkedin
-    #   link: "#"
-    # - icon: fa-stack-exchange
-    #   link: "#"
+# Newsletter
+mailchimp: # Add your MailChimp form identifier. For example - blogenjoyfreedom.us16.list-manage.com/subscribe/post?u=cd56155d76ddeeb4c0bc4d080&amp;id=7a526cd13e
 
-# share:
-#   twitter_username: github.io
-#   fb_appid: 1749788565247320
+# Google Analytics
+google-analytics: # Add your identifier. For example UA-99631805-1
 
-urls:
-    - text: About Me
-      url: /about/
-    - text: Reviews
-      url: /review/
-    # - text: XML Feed
-    #   url: /feed.xml
+# Comment Section (Disqus)
+disqus-identifier: mr-brown # Add your shortname for Disqus Comment. For example mr-brown
 
-url: "https://s-annie.github.io"
-baseurl: ""
-paginate: 20
-per_page: 20
-paginate_path: "/page/:num/"
+# Build settings
 markdown: kramdown
-gems:
+permalink: /:year/:month/:day/:title/
+plugins:
   - jekyll-paginate
-  - jekyll-gist
 
-compress_html:
-  clippings: all
-  comments: ["<!-- ", " -->"]
-  endings: all
-  ignore:
-    envs: ['development']
+paginate: 7
+paginate_path: "/page/:num/"
+
+include:
+  - _pages
+
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Exclude from processing.
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
