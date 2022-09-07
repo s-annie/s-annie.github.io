@@ -3,14 +3,15 @@
   @extend %padding-header;
   display: inline-block;
   width: 75%;
-  height: 550px;
+  height: 800px;
   font-size: 1.2em;
   text-align: center;
   color: var(--header-text);
   background: no-repeat var(--header-background);
-  backdrop-filter: brightness(0.5);
-  background-size: cover;
-  margin-left: 210px;
+  background-attachment: fixed;
+  background-size: contain;
+  
+  // backdrop-filter: brightness(0.5);
 
   h1 {
     font-family: $font-family-logo;
@@ -40,7 +41,7 @@
 }
 
 #main {
-  background-position: 100% -50px, 0 center, center top;
+  background-position: 100% 0px, 0 center, center top;
 }
 
 /* --- Post listing --- */
