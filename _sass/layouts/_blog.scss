@@ -3,13 +3,13 @@
   @extend %padding-header;
   display: inline-block;
   width: 75%;
-  height: 800px;
+  height: 600px;
   font-size: 1.2em;
   text-align: center;
   color: var(--header-text);
   background: no-repeat var(--header-background);
-  background-attachment: fixed;
-  background-size: contain;
+  background-size: cover;
+  margin-left: 210px;
   
   // backdrop-filter: brightness(0.5);
 
