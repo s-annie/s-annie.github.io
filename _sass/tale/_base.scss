@@ -64,3 +64,12 @@ img {
 td {
   vertical-align: top;
 }
+
+figure img {
+  vertical-align: top;
+}
+figure figcaption {
+  text-align: center;
+  font-size: small;
+  color: gray;
+}
