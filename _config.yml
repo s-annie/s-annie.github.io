@@ -1,6 +1,6 @@
 # Site settings
-title:          安妮的独幕戏
-description:    "Tea is at four. Don't bother knocking, you are welcome anytime."
+title:           Annie's monologue
+description:    ""
 baseurl:        ""
 url:            "https://s-annie.github.io"
 
@@ -32,7 +32,7 @@ plugins:
 
 # Permalinks
 permalink:      /:year-:month-:day/:title
-paginate:       5
+paginate:       10
 
 # Excludes
 exclude: [ Gemfile, Gemfile.lock, tale.gemspec ]

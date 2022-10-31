@@ -27,7 +27,12 @@ footer,
     @include transition(all .2s ease-out);
     color: $default-color;
     display: inline-block;
+    font-size: 48px;
+    // font-family: La Belle Aurore, cursive;
+    font-family: Marck Script, cursive;
     margin: 0;
+    padding-top: .5rem;
+    padding-left: .5rem;
     padding-right: .2rem;
 
     &:hover,
@@ -62,7 +67,7 @@ footer,
 
   a {
     color: $default-color;
-    font-family: $sans-serif;
+    font-family: 'Noto Sans Mono', monospace;
   }
 }
 
@@ -81,7 +86,9 @@ footer,
 }
 
 footer {
-  font-family: $serif-secondary;
+  // font-family: $monospaced;
+  font-family: Raleway, sans-serif;
+  // font-family: 'Caveat', cursive;
   padding: 2rem 0;
   text-align: center;
 

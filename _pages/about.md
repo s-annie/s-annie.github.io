@@ -3,4 +3,5 @@ layout: post
 title: "About"
 permalink: /about/
 ---
-This is Annie. An ultimate daydreamer believer.
+向往袋底洞生活的城市小蚂蚁。
+
