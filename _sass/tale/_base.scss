@@ -1,10 +1,6 @@
 * {
   @include box-sizing;
   line-height: 1.5;
-  @font-face {
-    font-family: "SiYuan";
-    src: url("../assets/fonts/SiYuan.tff");
-  }
 }
 
 html,
@@ -16,8 +12,6 @@ body {
 
 html {
   font-family: $sans-serif;
-  // font-family: $serif-primary;
-  // font-family: 'Noto Sans SC', sans-serif;
   font-size: 14px;
   overflow-y: scroll;
 
