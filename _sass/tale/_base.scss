@@ -1,6 +1,10 @@
 * {
   @include box-sizing;
   line-height: 1.5;
+  @font-face {
+    font-family: "SiYuan";
+    src: url("../assets/fonts/SiYuan.tff");
+  }
 }
 
 html,
