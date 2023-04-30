@@ -1,6 +1,5 @@
-<footer>
-  <span>
-    And it's time, time, time that you love.<br>
-    &copy; <time datetime="{{ site.time }}">{{ site.time | date: '%Y' }}</time> {{ site.author.name }}.
-  </span>
-</footer>
+{% include svg-icons.html %}
+
+{% if site.footer-text %}
+<p>{{ site.footer-text }}</p>
+{% endif %}
