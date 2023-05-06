@@ -19,7 +19,7 @@ html {
 }
 
 body {
-  font-family: $base-font;
+  font-family: $helveticaNeue;
   color: $base-color;
   line-height: 1.6;
 }
@@ -400,7 +400,7 @@ nav {
 
 // Posts
 .posts > .post {
-  padding-bottom: 2em;
+  padding-bottom: 1em;
   border-bottom: 1px solid $divider-color;
 }
 
@@ -412,18 +412,21 @@ nav {
 .post {
   h1 {
     margin-bottom: .1em;
+    font-family: $helveticaNeue;
   }
 
   .date {
     font-weight: 300;
+    font-family: 'Courier New', Courier, monospace;
     font-size: $small-font-size;
     color: $base-lighten-color;
-    margin-right: 3px;
+    margin-right: 7px;
   }
 
   .tag {
     display: inline;
     font-weight: 300;
+    font-family: $helveticaNeue;
     font-size: $small-font-size;
 
     li:before {
@@ -555,6 +558,7 @@ nav {
 footer {
   padding: 20px 0;
   text-align: center;
+  font-family: $helveticaNeue;
 
   p {
     font-size: $small-font-size;

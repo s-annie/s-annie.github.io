@@ -3,10 +3,10 @@
 #
 
 # Name of your site (displayed in the header)
-name: A Day in Life
+name: A Day in the Life
 
 # Short bio or description (displayed in the header)
-description: ""
+description: 
 
 #
 # Flags below are optional
@@ -28,6 +28,8 @@ navigation:
     url: /archive
   - name: Tags
     url: /tags
+  - name: Tech
+    url: /tech
 
 # Pagination
 paginate: 5
